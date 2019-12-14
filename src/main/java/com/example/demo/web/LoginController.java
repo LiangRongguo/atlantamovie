@@ -25,10 +25,7 @@ public class LoginController {
                          @RequestParam String password,
                          HttpSession session,
                          RedirectAttributes attributes) {
-        // User user = userService.checkUser(username, password);
-        User user = new User();
-        user.setUsername(username);
-        user.setPassword(password);
+        User user = userService.checkUser(username, password);
 
         if (user != null) {
             user.setPassword(null);

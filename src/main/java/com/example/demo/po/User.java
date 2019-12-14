@@ -1,24 +1,18 @@
 package com.example.demo.po;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "user")
 public class User {
     @Id
-    @GeneratedValue
-    private long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer userId;
     private String username;
     private String password;
     private String status;
     private String firstname;
     private String lastname;
-
-    public User() {
-    }
 
     public String getUsername() {
         return username;
@@ -35,7 +29,6 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
-
 
     public String getStatus() {
         return status;
@@ -61,14 +54,16 @@ public class User {
         this.lastname = lastname;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", status='" + status + '\'' +
-                ", firstname='" + firstname + '\'' +
-                ", lastname='" + lastname + '\'' +
-                '}';
+    public User() {
+    }
+
+    public User(Integer userId, String username, String password, String status,
+                String firstname, String lastname) {
+        this.userId = userId;
+        this.username = username;
+        this.password = password;
+        this.status = status;
+        this.firstname = firstname;
+        this.lastname = lastname;
     }
 }

@@ -12,10 +12,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User checkUser(String username, String password) {
-        System.out.println(username);
         User user = userRepository.findByUsernameAndPassword(username, password);
-        //User user = userRepository.findByUsername(username);
-        System.out.println(user.toString());
         return user;
     }
 }
