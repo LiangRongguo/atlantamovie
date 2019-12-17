@@ -2,6 +2,7 @@ package com.example.demo.web;
 
 import com.example.demo.po.User;
 import com.example.demo.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,11 +14,17 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class LoginController {
 
+    @Autowired
     private UserService userService;
 
     @GetMapping
     public String loginPage() {
         return "/login";
+    }
+
+    @GetMapping("/index")
+    public String index() {
+        return "/index";
     }
 
     @PostMapping("/login")
@@ -33,7 +40,7 @@ public class LoginController {
             return "/index";
         }
         else {
-            attributes.addFlashAttribute("message","Username/ password is wrong");
+            attributes.addFlashAttribute("message","Username/password is wrong");
             return "redirect:";
         }
     }
@@ -41,6 +48,6 @@ public class LoginController {
     @GetMapping("/logout")
     public String logout(HttpSession session) {
         session.removeAttribute("user");
-        return "/index";
+        return "redirect:";
     }
 }

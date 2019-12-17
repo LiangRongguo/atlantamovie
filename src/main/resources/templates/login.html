@@ -11,21 +11,26 @@
 
 <h1 class="ui center aligned header">Atlanta Movie Login</h1>
 <div class="ui placeholder segment">
-    <div class="ui two column very relaxed stackable grid">
+    <div class="ui four column very relaxed stackable grid">
+        <div class="column"></div>
         <div class="column">
             <form class="ui form" method="post" action="#" th:action="@{/login}">
-                <div class="field">
+                <div class="required field">
                     <label>Username</label>
                     <div class="ui left icon input">
                         <i class="user icon"></i>
-                        <input type="text" name="username" placeholder="Username">
+                        <input type="text" name="username" placeholder="username">
                     </div>
+                </div>
+                <div class="required field">
                     <label>Password</label>
                     <div class="ui left icon input">
                         <i class="lock icon"></i>
-                        <input type="password" name="password" placeholder="Password">
+                        <input type="password" name="password" placeholder="password">
                     </div>
                 </div>
+                <div class="ui error mini message"></div>
+                <div class="ui mini negative message" th:unless="${#strings.isEmpty(message)}" th:text="${message}">Username/password</div>
                 <button class="ui blue submit button">Login</button>
             </form>
         </div>
@@ -34,8 +39,31 @@
         </div>
     </div>
     <div class="ui vertical divider">Or</div>
+    <div class="column"></div>
 </div>
 
 <footer></footer>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
+<script>
+    $('.ui.form').form({
+        fields : {
+            username : {
+                identifier: 'username',
+                rules: [{
+                    type : 'empty',
+                    prompt: 'Please input username'
+                }]
+            },
+            password : {
+                identifier: 'password',
+                rules: [{
+                    type : 'empty',
+                    prompt: 'Please input password'
+                }]
+            }
+        }
+    });
+</script>
 </body>
 </html>
