@@ -6,6 +6,8 @@ import com.example.demo.util.MD5Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
+
 @Service
 public class UserServiceImpl implements UserService {
     @Autowired
@@ -15,5 +17,17 @@ public class UserServiceImpl implements UserService {
     public User checkUser(String username, String password) {
         User user = userRepository.findByUsernameAndPassword(username, MD5Utils.code(password));
         return user;
+    }
+
+    @Override
+    public User checkUserExist(String username) {
+        User user = userRepository.findByUsername(username);
+        return user;
+    }
+
+    @Transactional
+    @Override
+    public User saveUser(User user) {
+        return userRepository.save(user);
     }
 }

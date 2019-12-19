@@ -18,6 +18,11 @@ public class LoginController {
     private UserService userService;
 
     @GetMapping
+    public String Home() {
+        return "/login";
+    }
+
+    @GetMapping("/login")
     public String loginPage() {
         return "/login";
     }
