@@ -27,7 +27,12 @@ public class UserServiceImpl implements UserService {
 
     @Transactional
     @Override
-    public User saveUser(User user) {
-        return userRepository.save(user);
+    public User saveUser(String username, String firstname, String lastname, String password) {
+        User user = new User();
+        user.setFirstname(firstname);
+        user.setLastname(lastname);
+        user.setUsername(username);
+        user.setPassword(MD5Utils.code(password));
+        return userRepository.saveAndFlush(user);
     }
 }

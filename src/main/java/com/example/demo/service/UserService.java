@@ -5,5 +5,5 @@ import com.example.demo.po.User;
 public interface UserService {
     User checkUser(String username, String password);
     User checkUserExist(String username);
-    User saveUser(User user);
+    User saveUser(String username, String firstname, String lastname, String password);
 }

@@ -15,7 +15,7 @@
     <div class="ui three column very relaxed stackable grid">
         <div class="column"></div>
         <div class="column">
-            <form class="ui form">
+            <form action="#" method="post" th:action="@{/customerRegistration}" class="ui form">
                 <div class="two fields">
                     <div class="required field">
                         <label>First Name</label>
@@ -65,6 +65,8 @@
                     </div>
                     <div class="field"></div>
                 </div>
+                <div class="ui error mini message"></div>
+                <div class="ui mini negative message" th:unless="${#strings.isEmpty(message)}" th:text="${message}">Customer registration failed</div>
                 <button class="ui large fluid submit primary button">Register</button>
             </form>
             <br>
@@ -75,5 +77,65 @@
 </div>
 
 <footer></footer>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
+<script>
+    $('.ui.form').form({
+        fields : {
+            firstname : {
+                identifier: 'firstname',
+                rules: [{
+                    type : 'empty',
+                    prompt: 'Please input firstname'
+                }]
+            },
+            lastname : {
+                identifier: 'lastname',
+                rules: [{
+                    type : 'empty',
+                    prompt: 'Please input lastname'
+                }]
+            },
+            username : {
+                identifier: 'username',
+                rules: [{
+                    type : 'empty',
+                    prompt: 'Please input username'
+                }]
+            },
+            password : {
+                identifier: 'password',
+                rules: [{
+                    type : 'empty',
+                    prompt: 'Please input password'
+                }]
+            },
+            confirmpassword : {
+                identifier: 'confirmpassword',
+                rules: [{
+                    type : 'empty',
+                    prompt: 'Please input confirmpassword'
+                }]
+            },
+            creditcardnum : {
+                identifier: 'creditcardnum',
+                rules: [
+                    {
+                        type : 'empty',
+                        prompt: 'Please input creditcardnum'
+                    },
+                    {
+                        type: 'number',
+                        prompt: "creditcardnum only allow digits"
+                    },
+                    {
+                        type: 'exactLength[16]',
+                        prompt: "the length of creditcardnum should be 16"
+                    }
+                ]
+            },
+        }
+    });
+</script>
 </body>
 </html>
