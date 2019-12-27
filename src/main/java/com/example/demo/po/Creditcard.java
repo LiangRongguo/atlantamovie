@@ -11,7 +11,7 @@ public class Creditcard implements Serializable {
 
     private String owner;
 
-    @ManyToOne(targetEntity = Customer.class)
+    @ManyToOne(targetEntity = Customer.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "owner", referencedColumnName = "username", insertable = false, updatable = false)
     private Customer customer;
 

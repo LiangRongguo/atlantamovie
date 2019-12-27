@@ -59,6 +59,7 @@ public class RegisController {
         if (u != null) {
             attributes.addFlashAttribute("message", "User registered successfully.");
         } else {
+            userService.delete(username);
             attributes.addFlashAttribute("message", "User registration failed.");
         }
         return "redirect:/userRegistration";
@@ -102,6 +103,9 @@ public class RegisController {
             return "redirect:/customerRegistration";
         }
 
+        // to do:
+        // Check number of credit card <= 5
+
         userService.saveUser(username, firstname, lastname, password);
         Customer customer = customerService.saveCustomer(username);
         Creditcard creditcard = creditcardService.saveCreditcard(creditcardnum, username);
@@ -109,7 +113,13 @@ public class RegisController {
         if (customer != null && creditcard != null) {
             attributes.addFlashAttribute("message", "Customer registered successfully.");
         } else {
-            // delete partial result
+            if (creditcard != null) {
+                creditcardService.delete(creditcardnum);
+            }
+            if (customer != null) {
+                customerService.delete(username);
+                userService.delete(username);
+            }
             attributes.addFlashAttribute("message", "Customer registration failed.");
         }
 

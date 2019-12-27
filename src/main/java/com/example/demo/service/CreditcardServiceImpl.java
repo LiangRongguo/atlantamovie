@@ -26,4 +26,10 @@ public class CreditcardServiceImpl implements CreditcardService {
         Creditcard creditcard = creditcardRepository.findByCreditcardnum(creditcardnum);
         return creditcard;
     }
+
+    @Transactional
+    @Override
+    public void delete(String creditcardnum) {
+        creditcardRepository.deleteByCreditcardnum(creditcardnum);
+    }
 }

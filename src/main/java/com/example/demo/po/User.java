@@ -3,10 +3,11 @@ package com.example.demo.po;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "user")
-public class User {
+public class User implements Serializable {
     @Id
     private String username;
     private String password;

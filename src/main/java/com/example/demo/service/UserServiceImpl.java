@@ -35,4 +35,10 @@ public class UserServiceImpl implements UserService {
         user.setPassword(MD5Utils.code(password));
         return userRepository.saveAndFlush(user);
     }
+
+    @Transactional
+    @Override
+    public void delete(String username) {
+        userRepository.deleteByUsername(username);
+    }
 }
