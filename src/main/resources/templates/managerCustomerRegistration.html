@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manager&Customer Registration</title>
+    <title>Manager & Customer Registration</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
 </head>
 <body>
@@ -15,7 +15,7 @@
     <div class="ui three column very relaxed stackable grid">
         <div class="column"></div>
         <div class="column">
-            <form class="ui form">
+            <form action="#" method="post" th:action="@{/managerCustomerRegistration}" class="ui form">
                 <div class="two fields">
                     <div class="required field">
                         <label>First Name</label>
@@ -38,7 +38,12 @@
                             <i class="user icon"></i>
                         </div>
                     </div>
-                    <div class="field"></div>
+                    <div class="required field">
+                        <label>Company</label>
+                        <select class="ui search dropdown" name="company">
+                            <option th:each="companies : ${page.content}" th:value="${companies.name}" th:text="${companies.name}">Company</option>
+                        </select>
+                    </div>
                 </div>
                 <div class="two fields">
                     <div class="required field">
@@ -145,6 +150,8 @@
                     </div>
                     <div class="field"></div>
                 </div>
+                <div class="ui error mini message"></div>
+                <div class="ui mini negative message" th:unless="${#strings.isEmpty(message)}" th:text="${message}">Customer registration failed</div>
                 <button class="ui large fluid submit primary button">Register</button>
             </form>
             <br>
@@ -155,5 +162,106 @@
 </div>
 
 <footer></footer>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
+<script>
+    $('.ui.form').form({
+        fields : {
+            firstname : {
+                identifier: 'firstname',
+                rules: [{
+                    type : 'empty',
+                    prompt: 'Please input firstname'
+                }]
+            },
+            lastname : {
+                identifier: 'lastname',
+                rules: [{
+                    type : 'empty',
+                    prompt: 'Please input lastname'
+                }]
+            },
+            username : {
+                identifier: 'username',
+                rules: [{
+                    type : 'empty',
+                    prompt: 'Please input username'
+                }]
+            },
+            company : {
+                identifier: 'company',
+                rules: [{
+                    type : 'empty',
+                    prompt: 'Please select company'
+                }]
+            },
+            password : {
+                identifier: 'password',
+                rules: [{
+                    type : 'empty',
+                    prompt: 'Please input password'
+                }]
+            },
+            confirmpassword : {
+                identifier: 'confirmpassword',
+                rules: [{
+                    type : 'empty',
+                    prompt: 'Please input confirmpassword'
+                }]
+            },
+            street : {
+                identifier: 'street',
+                rules: [{
+                    type : 'empty',
+                    prompt: 'Please input street address'
+                }]
+            },
+            city : {
+                identifier: 'city',
+                rules: [{
+                    type : 'empty',
+                    prompt: 'Please input city'
+                }]
+            },
+            state : {
+                identifier: 'state',
+                rules: [{
+                    type : 'empty',
+                    prompt: 'Please select state'
+                }]
+            },
+            zipcode : {
+                identifier: 'zipcode',
+                rules: [
+                    {
+                        type : 'empty',
+                        prompt: 'Please input zipcode'
+                    },
+                    {
+                        type: 'exactLength[5]',
+                        prompt: "the length of zipcode should be 5"
+                    }
+                ]
+            },
+            creditcardnum : {
+                identifier: 'creditcardnum',
+                rules: [
+                    {
+                        type : 'empty',
+                        prompt: 'Please input creditcardnum'
+                    },
+                    {
+                        type: 'number',
+                        prompt: "creditcardnum only allow digits"
+                    },
+                    {
+                        type: 'exactLength[16]',
+                        prompt: "the length of creditcardnum should be 16"
+                    }
+                ]
+            },
+        }
+    });
+</script>
 </body>
 </html>

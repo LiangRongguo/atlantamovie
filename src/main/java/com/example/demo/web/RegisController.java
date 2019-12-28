@@ -71,7 +71,7 @@ public class RegisController {
             userService.delete(username);
             attributes.addFlashAttribute("message", "User registration failed.");
         }
-        return "redirect:/userRegistration";
+        return "redirect:/login";
     }
 
     @GetMapping("/customerRegistration")
@@ -109,21 +109,9 @@ public class RegisController {
         User user = userService.saveUser(username, firstname, lastname, password);
         Customer customer = customerService.saveCustomer(username);
         Creditcard creditcard = creditcardService.saveCreditcard(creditcardnum, username);
+        attributes.addFlashAttribute("message", "Customer registered successfully.");
 
-        if (customer != null && creditcard != null) {
-            attributes.addFlashAttribute("message", "Customer registered successfully.");
-        } else {
-            if (creditcard != null) {
-                creditcardService.delete(creditcardnum);
-            }
-            if (customer != null) {
-                customerService.delete(username);
-                userService.delete(username);
-            }
-            attributes.addFlashAttribute("message", "Customer registration failed.");
-        }
-
-        return "redirect:/customerRegistration";
+        return "redirect:/login";
     }
 
     @GetMapping("/managerRegistration")
@@ -167,11 +155,59 @@ public class RegisController {
         Manager manager = managerService.saveManager(username, company, street, city, state, zipcode);
         attributes.addFlashAttribute("message", "Manager registered successfully.");
 
-        return "redirect:/managerRegistration";
+        return "redirect:/login";
     }
 
     @GetMapping("/managerCustomerRegistration")
-    public String managerCustomerRegistration() {
+    public String managerCustomerRegistrationPage(@PageableDefault(size = 10, sort = {"name"}, direction = Sort.Direction.ASC)Pageable pageable, Model model) {
+        model.addAttribute("page", companyService.listCompany(pageable));
         return "/managerCustomerRegistration";
+    }
+
+    @PostMapping("/managerCustomerRegistration")
+    public String managerCustomerRegistration(@RequestParam String firstname,
+                                              @RequestParam String lastname,
+                                              @RequestParam String username,
+                                              @RequestParam String company,
+                                              @RequestParam String password,
+                                              @RequestParam String confirmpassword,
+                                              @RequestParam String street,
+                                              @RequestParam String city,
+                                              @RequestParam String state,
+                                              @RequestParam String zipcode,
+                                              @RequestParam String creditcardnum,
+                                              RedirectAttributes attributes) {
+        // check whether password matches confirm-password
+        if (!password.equals(confirmpassword)) {
+            attributes.addFlashAttribute("message", "Password does not match the confirmation password.");
+            return "redirect:/managerCustomerRegistration";
+        }
+
+        // check whether the user already exists or not
+        if (userService.checkUserExist(username) != null) {
+            attributes.addFlashAttribute("message", "User already exists.");
+            return "redirect:/managerCustomerRegistration";
+        }
+
+        // check whether the street address is unique
+        if (managerService.checkStreetAddress(street, city, state, zipcode) != null) {
+            attributes.addFlashAttribute("message", "Street address already been registered.");
+            return "redirect:/managerCustomerRegistration";
+        }
+
+        // check whether the creditcardnum already exists or not
+        if (creditcardService.checkCreditcardnum(creditcardnum) != null) {
+            attributes.addFlashAttribute("message", "Creditcard already exists.");
+            return "redirect:/managerCustomerRegistration";
+        }
+
+        User user = userService.saveUser(username, firstname, lastname, password);
+        Employee employee = employeeService.saveEmployee(username);
+        Manager manager = managerService.saveManager(username, company, street, city, state, zipcode);
+        Customer customer = customerService.saveCustomer(username);
+        Creditcard creditcard = creditcardService.saveCreditcard(creditcardnum, username);
+        attributes.addFlashAttribute("message", "Manager&Customer registered successfully.");
+
+        return "redirect:/login";
     }
 }
