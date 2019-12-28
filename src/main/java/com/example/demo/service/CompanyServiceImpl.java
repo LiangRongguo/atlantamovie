@@ -3,6 +3,8 @@ package com.example.demo.service;
 import com.example.demo.dao.CompanyRepository;
 import com.example.demo.po.Company;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -30,5 +32,11 @@ public class CompanyServiceImpl implements CompanyService {
     @Override
     public void delete(String name) {
         companyRepository.deleteByName(name);
+    }
+
+    @Transactional
+    @Override
+    public Page<Company> listCompany(Pageable pageable) {
+        return companyRepository.findAll(pageable);
     }
 }

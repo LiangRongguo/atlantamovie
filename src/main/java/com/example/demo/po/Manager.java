@@ -4,7 +4,8 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "manager")
+@Table(name = "manager", uniqueConstraints =
+        {@UniqueConstraint(columnNames={"street", "city", "state", "zipcode"})})
 public class Manager implements Serializable {
     @Id
     private String username;
@@ -14,7 +15,7 @@ public class Manager implements Serializable {
     private String zipcode;
     private String street;
     private String city;
-    private String State;
+    private String state;
     private String works_in;
     @ManyToOne(targetEntity = Company.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "works_in", referencedColumnName = "name", insertable = false, updatable = false)
@@ -61,11 +62,11 @@ public class Manager implements Serializable {
     }
 
     public String getState() {
-        return State;
+        return state;
     }
 
     public void setState(String state) {
-        State = state;
+        this.state = state;
     }
 
     public String getWorks_in() {
