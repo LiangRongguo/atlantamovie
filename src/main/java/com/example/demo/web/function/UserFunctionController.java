@@ -22,6 +22,11 @@ public class UserFunctionController {
     @Autowired
     private TheaterService theaterService;
 
+    @GetMapping("userFunctionality")
+    public String userFunc() {
+        return "function/userFunctionality";
+    }
+
     @GetMapping("/exploreTheater")
     public String exploreTheaterPage(@PageableDefault(size = 10) Pageable pageable, Model model, TheaterQuery theaterQuery) {
         model.addAttribute("page_company", companyService.listCompany(pageable));
@@ -41,5 +46,12 @@ public class UserFunctionController {
         model.addAttribute("page_theater", theaterService.listTheater(pageable));
         model.addAttribute("page", theaterService.filterTheater(pageable, new TheaterQuery(company, theater, city, state)));
         return "/function/exploreTheater";
+    }
+
+    @GetMapping("visitHistory")
+    public String visitHistoryPage(@PageableDefault(size = 10) Pageable pageable, Model model) {
+        model.addAttribute("page_company", companyService.listCompany(pageable));
+        model.addAttribute("page", theaterService.filterTheater(pageable, new TheaterQuery("", "", "", "")));
+        return "/function/visitHistory";
     }
 }

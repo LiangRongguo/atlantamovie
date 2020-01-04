@@ -126,16 +126,14 @@
                     </tbody>
                     <tfoot>
                     <tr>
-                        <div class="ui mini pagination menu" th:if="${page.totalPages}>1" >
-                            <a onclick="page(this)" th:attr="data-page=${page.number}-1" class="item" th:unless="${page.first}">上一页</a>
-                            <a onclick="page(this)" th:attr="data-page=${page.number}+1" class="item" th:unless="${page.last}">下一页</a>
-                        </div>
+
                     </tr>
                     </tfoot>
                 </table>
             </div>
         </div>
     </div>
+    <br><a class="ui large fluid primary button" href="#" th:href="@{/func/userFunctionality}">Back</a><br>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
