@@ -34,7 +34,6 @@ public class CompanyServiceImpl implements CompanyService {
         companyRepository.deleteByName(name);
     }
 
-    @Transactional
     @Override
     public Page<Company> listCompany(Pageable pageable) {
         return companyRepository.findAll(pageable);
