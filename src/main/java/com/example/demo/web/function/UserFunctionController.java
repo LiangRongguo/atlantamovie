@@ -2,7 +2,9 @@ package com.example.demo.web.function;
 
 import com.example.demo.service.CompanyService;
 import com.example.demo.service.TheaterService;
+import com.example.demo.service.VisitService;
 import com.example.demo.vo.TheaterQuery;
+import com.example.demo.vo.VisitQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
@@ -13,6 +15,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpSession;
+
 @Controller
 @RequestMapping("/func")
 public class UserFunctionController {
@@ -21,6 +25,9 @@ public class UserFunctionController {
 
     @Autowired
     private TheaterService theaterService;
+
+    @Autowired
+    private VisitService visitService;
 
     @GetMapping("userFunctionality")
     public String userFunc() {
@@ -48,10 +55,21 @@ public class UserFunctionController {
         return "/function/exploreTheater";
     }
 
-    @GetMapping("visitHistory")
-    public String visitHistoryPage(@PageableDefault(size = 10) Pageable pageable, Model model) {
+    @GetMapping("/visitHistory")
+    public String visitHistoryPage(@PageableDefault(size = 10) Pageable pageable, Model model, VisitQuery visitQuery, HttpSession session) {
         model.addAttribute("page_company", companyService.listCompany(pageable));
-        model.addAttribute("page", theaterService.filterTheater(pageable, new TheaterQuery("", "", "", "")));
+        model.addAttribute("page", visitService.filterVisit(pageable, visitQuery, session));
+        return "/function/visitHistory";
+    }
+
+    @PostMapping("/visitHistory")
+    public String visitHistory(@PageableDefault(size = 10) Pageable pageable, Model model,
+                               @RequestParam String company,
+                               @RequestParam String beginDate,
+                               @RequestParam String endDate,
+                               HttpSession session) {
+        model.addAttribute("page_company", companyService.listCompany(pageable));
+        model.addAttribute("page", visitService.filterVisit(pageable, new VisitQuery(company, beginDate, endDate), session));
         return "/function/visitHistory";
     }
 }

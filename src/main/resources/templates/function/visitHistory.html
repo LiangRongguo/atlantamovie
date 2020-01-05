@@ -28,14 +28,14 @@
                         <label>Visit Date From</label>
                         <div class="ui icon input">
                             <i class="calendar outline icon"></i>
-                            <input type="text" name="city">
+                            <input type="text" name="beginDate">
                         </div>
                     </div>
                     <div class="field">
                         <label>To (inclusive)</label>
                         <div class="ui icon input">
                             <i class="calendar outline icon"></i>
-                            <input type="text" name="city">
+                            <input type="text" name="endDate">
                         </div>
                     </div>
                 </div>
@@ -59,12 +59,12 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="theater,iterStat : ${page.content}">
+                    <tr th:each="visit,iterStat : ${page.content}">
                         <td th:text="${iterStat.count}">1</td>
-                        <td th:text="${theater.theaterId.theatername}">Theater Name</td>
-                        <td th:text="${theater.street} + ', ' + ${theater.city} + ', ' + ${theater.state} + ', ' + ${theater.zipcode}">Address</td>
-                        <td th:text="${theater.theaterId.companyname}">Company Name</td>
-                        <td th:text="${theater.theaterId.companyname}">Visit Date</td>
+                        <td th:text="${visit.theatername}">Theater Name</td>
+                        <td th:text="${visit.theater.street} + ', ' + ${visit.theater.city} + ', ' + ${visit.theater.state} + ', ' + ${visit.theater.zipcode}">Address</td>
+                        <td th:text="${visit.companyname}">Company Name</td>
+                        <td th:text="${visit.date}">Visit Date</td>
                     </tr>
                     </tbody>
                     <tfoot>

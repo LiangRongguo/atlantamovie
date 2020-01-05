@@ -69,6 +69,14 @@ public class visit implements Serializable {
         this.companyname = companyname;
     }
 
+    public Theater getTheater() {
+        return theater;
+    }
+
+    public void setTheater(Theater theater) {
+        this.theater = theater;
+    }
+
     @Override
     public String toString() {
         return "visit{" +

@@ -5,12 +5,15 @@ import com.example.demo.po.Manager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
 public class ManagerServiceImpl implements ManagerService {
     @Autowired
     private ManagerRepository managerRepository;
+
+    @Override
+    public Manager checkManagerExist(String username) {
+        return managerRepository.findByUsername(username);
+    }
 
     @Override
     public Manager checkStreetAddress(String street, String city, String state, String zipcode) {

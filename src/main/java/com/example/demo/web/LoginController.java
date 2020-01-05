@@ -1,6 +1,12 @@
 package com.example.demo.web;
 
+import com.example.demo.po.Admin;
+import com.example.demo.po.Customer;
+import com.example.demo.po.Manager;
 import com.example.demo.po.User;
+import com.example.demo.service.AdminService;
+import com.example.demo.service.CustomerService;
+import com.example.demo.service.ManagerService;
 import com.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,9 +19,18 @@ import javax.servlet.http.HttpSession;
 
 @Controller
 public class LoginController {
-
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private CustomerService customerService;
+
+    @Autowired
+    private ManagerService managerService;
+
+    @Autowired
+    private AdminService adminService;
+
 
     @GetMapping
     public String Home() {
@@ -42,7 +57,33 @@ public class LoginController {
         if (user != null) {
             user.setPassword(null);
             session.setAttribute("user", user);
-            return "/index";
+
+            Customer customer = customerService.checkCustomerExist(username);
+            Manager manager = managerService.checkManagerExist(username);
+            Admin admin = adminService.checkAdminExist(username);
+
+            if (admin != null) {
+                if (customer != null) {
+                    return "/function/adminAndCustomerFunctionality";
+                }
+                else {
+                    return "/function/adminFunctionality";
+                }
+            }
+
+            if (manager != null) {
+                if (customer != null) {
+                    return "/function/managerAndCustomerFunctionality";
+                }
+                else {
+                    return "/function/managerFunctionality";
+                }
+            }
+            else if (customer != null) {
+                return "/function/customerFunctionality";
+            }
+
+            return "/function/userFunctionality";
         }
         else {
             attributes.addFlashAttribute("message","Username/password is wrong");
