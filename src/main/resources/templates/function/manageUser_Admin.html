@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage User</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+</head>
+<body>
+<nav></nav>
+
+<h1 class="ui center aligned header">Manage User</h1>
+
+<div class="ui placeholder segment">
+    <div class="ui three column very relaxed stackable grid">
+        <div class="column"></div>
+        <div class="column">
+            <form action="#" method="post" th:action="@{/func/manageUser_Admin}" class="ui form">
+                <div class="two fields">
+                    <div class="field">
+                        <label>Username</label>
+                        <div class="ui icon input">
+                            <input type="text" name="username">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label>Status</label>
+                        <select class="ui search dropdown" name="status">
+                            <option value="">--ALL--</option>
+                            <option value="Approved">Approved</option>
+                            <option value="Declined">Declined</option>
+                            <option value="Pending">Pending</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="four fields">
+                    <dic class="field">
+                        <button class="ui large fluid submit primary button">Filter</button>
+                    </dic>
+                    <div class="field"></div>
+                    <dic class="field">
+                        <button class="ui large fluid submit primary button">Approve</button>
+                    </dic>
+                    <dic class="field">
+                        <button class="ui large fluid submit primary button">Decline</button>
+                    </dic>
+                </div>
+            </form>
+        </div>
+        <div class="column"></div>
+    </div>
+
+    <div class="ui one column very relaxed stackable grid">
+        <div class="column">
+            <div id="table-container">
+                <table th:fragment="TheaterList" class="ui compact teal table">
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th>Username</th>
+                        <th>Credit Card Count</th>
+                        <th>User Type</th>
+                        <th>Status</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="user,iterStat : ${page_user.content}">
+                        <td th:text="${iterStat.count}">1</td>
+                        <td th:text="${user.username}">Username</td>
+                        <td>Credit Card Count</td>
+                        <td>User Type</td>
+                        <td th:text="${user.status}">Status</td>
+                        <td class="collapsing">
+                            <div class="ui fitted slider checkbox">
+                                <input type="checkbox"> <label></label>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                    <tfoot>
+                    <tr>
+
+                    </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+    <br><a class="ui large fluid button" href="#" th:href="@{/func/adminFunctionality}">Back</a><br>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
+<script>
+
+</script>
+</body>
+</html>

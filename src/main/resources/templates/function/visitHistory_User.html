@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visit History</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+</head>
+<body>
+<nav></nav>
+
+<h1 class="ui center aligned header">Visit History</h1>
+
+<div class="ui placeholder segment">
+    <div class="ui three column very relaxed stackable grid">
+        <div class="column"></div>
+        <div class="column">
+            <form action="#" method="post" th:action="@{/func/visitHistory_User}" class="ui form">
+                <div class="three fields">
+                    <div class="field">
+                        <label>Company Name</label>
+                        <select class="ui search dropdown" name="company">
+                            <option value="">--ALL--</option>
+                            <option th:each="companies : ${page_company.content}" th:value="${companies.name}" th:text="${companies.name}">Company</option>
+                        </select>
+                    </div>
+                    <div class="field">
+                        <label>Visit Date From</label>
+                        <div class="ui icon input">
+                            <i class="calendar outline icon"></i>
+                            <input type="text" name="beginDate">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label>To (inclusive)</label>
+                        <div class="ui icon input">
+                            <i class="calendar outline icon"></i>
+                            <input type="text" name="endDate">
+                        </div>
+                    </div>
+                </div>
+                <button class="ui large fluid submit primary button">Filter</button>
+            </form>
+        </div>
+        <div class="column"></div>
+    </div>
+
+    <div class="ui one column very relaxed stackable grid">
+        <div class="column">
+            <div id="table-container">
+                <table th:fragment="TheaterList" class="ui compact teal table">
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th>Theater</th>
+                        <th>Address</th>
+                        <th>Company</th>
+                        <th>Visit Date</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="visit,iterStat : ${page.content}">
+                        <td th:text="${iterStat.count}">1</td>
+                        <td th:text="${visit.theatername}">Theater Name</td>
+                        <td th:text="${visit.theater.street} + ', ' + ${visit.theater.city} + ', ' + ${visit.theater.state} + ', ' + ${visit.theater.zipcode}">Address</td>
+                        <td th:text="${visit.companyname}">Company Name</td>
+                        <td th:text="${visit.date}">Visit Date</td>
+                    </tr>
+                    </tbody>
+                    <tfoot>
+                    <tr>
+
+                    </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+    <br><a class="ui large fluid button" href="#" th:href="@{/func/userFunctionality}">Back</a><br>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
+<script>
+
+</script>
+</body>
+</html>
