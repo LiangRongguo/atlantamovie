@@ -25,7 +25,6 @@ public class AdminFunctionController {
     @Autowired
     private UserService userService;
 
-
     @Autowired
     private CompanyService companyService;
 
