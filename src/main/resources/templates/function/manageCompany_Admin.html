@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Company</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+</head>
+<body>
+<nav></nav>
+
+<h1 class="ui center aligned header">Manage Company</h1>
+
+<div class="ui placeholder segment">
+    <div class="ui three column very relaxed stackable grid">
+        <div class="column"></div>
+        <div class="column">
+            <form action="#" method="post" th:action="@{/func/manageCompany_Admin}" class="ui form">
+                <div class="three fields">
+                    <div class="field">
+                        <label>Name</label>
+                        <select class="ui search dropdown" name="name">
+                            <option value="">--ALL--</option>
+                            <option th:each="companies : ${page_company.content}" th:value="${companies.name}" th:text="${companies.name}">Company Name</option>
+                        </select>
+                    </div>
+                    <div class="field">
+                        <label>#City from</label>
+                        <div class="ui icon input">
+                            <input type="text" name="city_min">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label>to</label>
+                        <div class="ui icon input">
+                            <input type="text" name="city_max">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="four fields">
+                    <div class="field">
+                        <label>#Theaters from</label>
+                        <div class="ui icon input">
+                            <input type="text" name="theater_min">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label>to</label>
+                        <div class="ui icon input">
+                            <input type="text" name="theater_max">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label>#Employee from</label>
+                        <div class="ui icon input">
+                            <input type="text" name="employee_min">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label>to</label>
+                        <div class="ui icon input">
+                            <input type="text" name="employee_max">
+                        </div>
+                    </div>
+                </div>
+                <div class="four fields">
+                    <div class="field">
+                        <button class="ui large fluid submit primary button">Filter</button>
+                    </div>
+                    <div class="field"></div>
+                    <div class="field">
+                        <button class="ui large fluid submit primary button">Create</button>
+                    </div>
+                    <div class="field">
+                        <button class="ui large fluid submit primary button">Detail</button>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+        <div class="column"></div>
+    </div>
+
+    <div class="ui one column very relaxed stackable grid">
+        <div class="column">
+            <div id="table-container">
+                <table class="ui compact teal table">
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th>Name</th>
+                        <th>#City Covered</th>
+                        <th>#Theater</th>
+                        <th>#Employee</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="company,iterStat : ${page_company.content}">
+                        <td th:text="${iterStat.count}">1</td>
+                        <td th:text="${company.name}">Company Name</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td class="collapsing">
+                            <div class="ui fitted slider checkbox">
+                                <input type="checkbox"> <label></label>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                    <tfoot>
+                    <tr>
+
+                    </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+    <br><a class="ui large fluid button" href="#" th:href="@{/func/adminFunctionality}">Back</a><br>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
+<script>
+
+</script>
+</body>
+</html>

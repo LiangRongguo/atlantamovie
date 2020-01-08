@@ -2,6 +2,7 @@ package com.example.demo.web.function;
 
 import com.example.demo.po.Movie;
 import com.example.demo.service.*;
+import com.example.demo.vo.CompanyQuery;
 import com.example.demo.vo.TheaterQuery;
 import com.example.demo.vo.UserQuery;
 import com.example.demo.vo.VisitQuery;
@@ -114,5 +115,24 @@ public class AdminFunctionController {
                                    @RequestParam String status) {
         model.addAttribute("page_user", userService.filterUser(pageable, new UserQuery(username, status)));
         return "function/manageUser_Admin";
+    }
+
+    @GetMapping("/manageCompany_Admin")
+    public String manageCompany_AdminPage(@PageableDefault(size = 10) Pageable pageable, Model model, CompanyQuery companyQuery) {
+        model.addAttribute("page_company", companyService.filterCompany(pageable, companyQuery));
+        return "function/manageCompany_Admin";
+    }
+
+    @PostMapping("/manageCompany_Admin")
+    public String manageCompany_Admin(@PageableDefault(size = 10, sort = {"name"},direction = Sort.Direction.ASC) Pageable pageable, Model model,
+                                      @RequestParam String name,
+                                      @RequestParam String city_min,
+                                      @RequestParam String city_max,
+                                      @RequestParam String theater_min,
+                                      @RequestParam String theater_max,
+                                      @RequestParam String employee_min,
+                                      @RequestParam String employee_max) {
+        model.addAttribute("page_company", companyService.filterCompany(pageable, new CompanyQuery(name, city_min, city_max, theater_min, theater_max, employee_min, employee_max)));
+        return "function/manageCompany_Admin";
     }
 }

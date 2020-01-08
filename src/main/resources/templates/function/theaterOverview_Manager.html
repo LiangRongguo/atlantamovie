@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theater Overview</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+</head>
+<body>
+<nav></nav>
+
+<h1 class="ui center aligned header">Theater Overview</h1>
+
+<div class="ui placeholder segment">
+    <div class="ui three column very relaxed stackable grid">
+        <div class="column"></div>
+        <div class="column">
+            <form action="#" method="post" th:action="@{/func/theaterOverview_Manager}" class="ui form">
+                <div class="two fields">
+                    <div class="field">
+                        <label>Movie Name(include)</label>
+                        <div class="ui icon input">
+                            <input type="text" name="city_max">
+                        </div>
+                    </div>
+                    <div class="field"></div>
+                </div>
+                <div class="two fields">
+                    <div class="field">
+                        <label>Movie Duration from</label>
+                        <div class="ui icon input">
+                            <input type="text" name="duration_min">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label>to</label>
+                        <div class="ui icon input">
+                            <input type="text" name="duration_max">
+                        </div>
+                    </div>
+                </div>
+                <div class="two fields">
+                    <div class="field">
+                        <label>Movie Release Date from</label>
+                        <div class="ui icon input">
+                            <input type="text" name="release_min">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label>to</label>
+                        <div class="ui icon input">
+                            <input type="text" name="release_max">
+                        </div>
+                    </div>
+                </div>
+                <div class="two fields">
+                    <div class="field">
+                        <label>Movie Play Date from</label>
+                        <div class="ui icon input">
+                            <input type="text" name="playdate_min">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label>to</label>
+                        <div class="ui icon input">
+                            <input type="text" name="playdate_max">
+                        </div>
+                    </div>
+                </div>
+                <div class="ui checkbox">
+                    <input type="checkbox" name="notPlayed">
+                    <label>Only include not played movies</label>
+                </div><br>
+                <br><button class="ui large fluid submit primary button">Filter</button>
+            </form>
+        </div>
+        <div class="column"></div>
+    </div>
+
+    <div class="ui one column very relaxed stackable grid">
+        <div class="column">
+            <div id="table-container">
+                <table class="ui compact teal table">
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th>Movie Name</th>
+                        <th>Duration</th>
+                        <th>Release Date</th>
+                        <th>Play Date</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                    </tr>
+                    </tbody>
+                    <tfoot>
+                    <tr>
+                    </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+    <br><a class="ui large fluid button" href="#" th:href="@{/func/managerFunctionality}">Back</a><br>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
+<script>
+
+</script>
+</body>
+</html>

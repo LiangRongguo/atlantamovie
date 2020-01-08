@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedule Movie</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+</head>
+<body>
+<nav></nav>
+
+<h1 class="ui center aligned header">Schedule Movie</h1>
+
+<div class="ui placeholder segment">
+    <div class="ui three column very relaxed stackable grid">
+        <div class="column"></div>
+        <div class="column">
+            <form action="#" method="post" th:action="@{/func/scheduleMovie_Manager}" class="ui form">
+                <div class="two fields">
+                    <div class="field">
+                        <label>Name</label>
+                        <select class="ui search dropdown" name="movieName">
+                            <option value="">--ALL--</option>
+                        </select>
+                    </div>
+                    <div class="field">
+                        <label>Release Date</label>
+                        <select class="ui search dropdown" name="releaseDate">
+                            <option value="">--ALL--</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="two fields">
+                    <div class="field">
+                        <label>Play Date</label>
+                        <div class="ui icon input">
+                            <input type="text" name="playDate">
+                        </div>
+                    </div>
+                    <div class="field">
+                    </div>
+                </div>
+                <button class="ui large fluid submit primary button">Add</button><br>
+                <a class="ui large fluid button" href="#" th:href="@{/func/managerFunctionality}">Back</a>
+            </form>
+        </div>
+        <div class="column"></div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
+<script>
+
+</script>
+</body>
+</html>
