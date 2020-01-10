@@ -5,5 +5,10 @@ import com.example.demo.po.MovieId;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface MovieRepository extends JpaRepository<Movie, MovieId> {
-    Movie findById_NameAndId_Releasedate(String name, String releasedate);
+    Movie findByNameAndReleasedate(String name, String releasedate);
+
+    // original version:
+    // used embedded id for composite primary key
+    // usage for findBy as below:
+    // Movie findById_NameAndId_Releasedate(String name, String releasedate);
 }
