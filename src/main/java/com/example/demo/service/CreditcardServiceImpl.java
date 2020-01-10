@@ -32,4 +32,10 @@ public class CreditcardServiceImpl implements CreditcardService {
     public void delete(String creditcardnum) {
         creditcardRepository.deleteByCreditcardnum(creditcardnum);
     }
+
+    @Override
+    public int findNumberOfCreditcard(String username) {
+        return creditcardRepository.findByOwner(username).size();
+    }
+
 }

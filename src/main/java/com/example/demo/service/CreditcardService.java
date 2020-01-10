@@ -6,4 +6,5 @@ public interface CreditcardService {
     Creditcard saveCreditcard(String creditcardnum, String username);
     Creditcard checkCreditcardnum(String creditcardnum);
     void delete(String creditcardnum);
+    int findNumberOfCreditcard(String username);
 }
