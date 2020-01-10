@@ -1,26 +1,37 @@
 package com.example.demo.po;
 
 import javax.persistence.*;
-import java.io.Serializable;
-import java.util.Objects;
 
-@Embeddable
-class MoviePlayId implements Serializable {
+@Entity
+@Table(name = "movieplay")
+@IdClass(MoviePlayId.class)
+public class MoviePlay {
+    @Id
     private String moviename;
+    @Id
     private String releasedate;
+    @Id
     private String companyname;
+    @Id
     private String theatername;
+    @Id
     private String date;
 
-    public MoviePlayId() {
-    }
+    @ManyToOne(targetEntity = Theater.class, cascade=CascadeType.ALL)
+    @JoinColumns ({
+            @JoinColumn(name="companyname", referencedColumnName = "companyname", insertable = false, updatable = false),
+            @JoinColumn(name="theatername", referencedColumnName = "theatername", insertable = false, updatable = false)
+    })
+    private Theater theater;
 
-    public MoviePlayId(String movieName, String releaseDate, String companyName, String theaterName, String date) {
-        this.moviename = movieName;
-        this.releasedate = releaseDate;
-        this.companyname = companyName;
-        this.theatername = theaterName;
-        this.date = date;
+    @ManyToOne(targetEntity = Movie.class, cascade=CascadeType.ALL)
+    @JoinColumns ({
+            @JoinColumn(name="moviename", referencedColumnName = "name", insertable = false, updatable = false),
+            @JoinColumn(name="releasedate", referencedColumnName = "releasedate", insertable = false, updatable = false)
+    })
+    private Movie movie;
+
+    public MoviePlay() {
     }
 
     public String getMoviename() {
@@ -63,52 +74,19 @@ class MoviePlayId implements Serializable {
         this.date = date;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        MoviePlayId that = (MoviePlayId) o;
-        return Objects.equals(moviename, that.moviename) &&
-                Objects.equals(releasedate, that.releasedate) &&
-                Objects.equals(companyname, that.companyname) &&
-                Objects.equals(theatername, that.theatername) &&
-                Objects.equals(date, that.date);
+    public Theater getTheater() {
+        return theater;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(moviename, releasedate, companyname, theatername, date);
-    }
-}
-
-@Entity
-@Table(name = "movieplay")
-public class MoviePlay {
-    @EmbeddedId
-    private MoviePlayId id;
-
-    @ManyToOne(targetEntity = Theater.class, cascade=CascadeType.ALL)
-    @JoinColumns ({
-            @JoinColumn(name="companyname", referencedColumnName = "companyname", insertable = false, updatable = false),
-            @JoinColumn(name="theatername", referencedColumnName = "theatername", insertable = false, updatable = false)
-    })
-    private Theater theater;
-
-    @ManyToOne(targetEntity = Movie.class, cascade=CascadeType.ALL)
-    @JoinColumns ({
-            @JoinColumn(name="moviename", referencedColumnName = "name", insertable = false, updatable = false),
-            @JoinColumn(name="releasedate", referencedColumnName = "releasedate", insertable = false, updatable = false)
-    })
-    private Movie movie;
-
-    public MoviePlay() {
+    public void setTheater(Theater theater) {
+        this.theater = theater;
     }
 
-    public MoviePlayId getId() {
-        return id;
+    public Movie getMovie() {
+        return movie;
     }
 
-    public void setId(MoviePlayId id) {
-        this.id = id;
+    public void setMovie(Movie movie) {
+        this.movie = movie;
     }
 }

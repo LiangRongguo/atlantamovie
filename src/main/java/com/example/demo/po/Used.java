@@ -19,8 +19,6 @@ public class Used implements Serializable {
     private String theatername;
     @Id
     private String companyname;
-    // @EmbeddedId
-    // private UsedId id;
 
     @ManyToOne(targetEntity = Creditcard.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "creditcardnum", referencedColumnName = "creditcardnum", insertable = false, updatable = false)
@@ -35,15 +33,6 @@ public class Used implements Serializable {
             @JoinColumn(name="date", referencedColumnName = "date", insertable = false, updatable = false),
     })
     private MoviePlay moviePlay;
-    /*
-    public UsedId getId() {
-        return id;
-    }
-
-    public void setId(UsedId id) {
-        this.id = id;
-    }
-    */
 
     public String getCreditcardnum() {
         return creditcardnum;

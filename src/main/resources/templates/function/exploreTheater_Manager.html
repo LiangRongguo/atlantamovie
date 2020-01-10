@@ -21,7 +21,7 @@
                         <label>Theater Name</label>
                         <select class="ui search dropdown" name="theater">
                             <option value="">--ALL--</option>
-                            <option th:each="theaters : ${page_theater.content}" th:value="${theaters.theaterId.theatername}" th:text="${theaters.theaterId.theatername}">Theater</option>
+                            <option th:each="theaters : ${page_theater.content}" th:value="${theaters.theatername}" th:text="${theaters.theatername}">Theater</option>
                         </select>
                     </div>
                     <div class="field">
@@ -119,9 +119,9 @@
                     <tbody>
                     <tr th:each="theater,iterStat : ${page.content}">
                         <td th:text="${iterStat.count}">1</td>
-                        <td th:text="${theater.theaterId.theatername}">Theater Name</td>
+                        <td th:text="${theater.theatername}">Theater Name</td>
                         <td th:text="${theater.street} + ', ' + ${theater.city} + ', ' + ${theater.state} + ', ' + ${theater.zipcode}">Address</td>
-                        <td th:text="${theater.theaterId.companyname}">Company Name</td>
+                        <td th:text="${theater.companyname}">Company Name</td>
                     </tr>
                     </tbody>
                     <tfoot>

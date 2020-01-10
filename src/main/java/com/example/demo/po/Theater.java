@@ -5,9 +5,12 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "theater")
+@IdClass(TheaterId.class)
 public class Theater implements Serializable {
-    @EmbeddedId
-    private TheaterId theaterId;
+    @Id
+    private String companyname;
+    @Id
+    private String theatername;
     private String zipcode;
     private String street;
     private String city;
@@ -26,20 +29,20 @@ public class Theater implements Serializable {
     public Theater() {
     }
 
-    public TheaterId getTheaterId() {
-        return theaterId;
+    public String getCompanyname() {
+        return companyname;
     }
 
-    public String getTheaterName() {
-        return theaterId.getTheatername();
+    public void setCompanyname(String companyname) {
+        this.companyname = companyname;
     }
 
-    public String getCompanyName() {
-        return theaterId.getCompanyname();
+    public String getTheatername() {
+        return theatername;
     }
 
-    public void setTheaterId(TheaterId theaterId) {
-        this.theaterId = theaterId;
+    public void setTheatername(String theatername) {
+        this.theatername = theatername;
     }
 
     public String getZipcode() {

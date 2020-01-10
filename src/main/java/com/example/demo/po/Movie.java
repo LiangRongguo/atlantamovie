@@ -1,16 +1,18 @@
 package com.example.demo.po;
 
-import javax.persistence.EmbeddedId;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 
 
 @Entity
 @Table(name = "movie")
+@IdClass(MovieId.class)
 public class Movie implements Serializable {
-    @EmbeddedId
-    private MovieId id;
+    @Id
+    private String name;
+    @Id
+    private String releasedate;
+
     private int duration;
 
     public Movie() {
@@ -24,12 +26,20 @@ public class Movie implements Serializable {
         this.duration = duration;
     }
 
-    public MovieId getId() {
-        return id;
+    public String getName() {
+        return name;
     }
 
-    public void setId(MovieId id) {
-        this.id = id;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getReleasedate() {
+        return releasedate;
+    }
+
+    public void setReleasedate(String releasedate) {
+        this.releasedate = releasedate;
     }
 }
 

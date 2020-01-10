@@ -2,7 +2,6 @@ package com.example.demo.service;
 
 import com.example.demo.dao.TheaterRepository;
 import com.example.demo.po.Theater;
-import com.example.demo.po.TheaterId;
 import com.example.demo.vo.TheaterQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -34,10 +33,10 @@ public class TheaterServiceImpl implements TheaterService {
             public Predicate toPredicate(Root<Theater> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
                 List<Predicate> predicates = new ArrayList<>();
                 if (!"".equals(theater.getTheater())) {
-                    predicates.add(criteriaBuilder.equal(root.<TheaterId>get("theaterId").<String>get("theatername"), theater.getTheater()));
+                    predicates.add(criteriaBuilder.equal(root.<String>get("theatername"), theater.getTheater()));
                 }
                 if (!"".equals(theater.getCompany())) {
-                    predicates.add(criteriaBuilder.equal(root.<TheaterId>get("theaterId").<String>get("companyname"), theater.getCompany()));
+                    predicates.add(criteriaBuilder.equal(root.<String>get("companyname"), theater.getCompany()));
                 }
                 if (!"".equals(theater.getCity())) {
                     predicates.add(criteriaBuilder.equal(root.<String>get("city"), theater.getCity()));
