@@ -106,6 +106,7 @@
 
     <div class="ui one column very relaxed stackable grid">
         <div class="column">
+            <form action="#" method="post" th:action="@{/func/logVisit_Customer}" class="ui form">
             <div id="table-container">
                 <table th:fragment="TheaterList" class="ui compact teal table">
                     <thead>
@@ -114,6 +115,7 @@
                         <th>Theater</th>
                         <th>Address</th>
                         <th>Company</th>
+                        <th></th>
                     </tr>
                     </thead>
                     <tbody>
@@ -122,24 +124,59 @@
                         <td th:text="${theater.theatername}">Theater Name</td>
                         <td th:text="${theater.street} + ', ' + ${theater.city} + ', ' + ${theater.state} + ', ' + ${theater.zipcode}">Address</td>
                         <td th:text="${theater.companyname}">Company Name</td>
+                        <td class="collapsing">
+                            <div class="ui fitted slider checkbox">
+                                <input type="checkbox"  name="check" onclick="onlyOne(this)"> <label></label>
+                            </div>
+                        </td>
                     </tr>
                     </tbody>
                     <tfoot>
                     <tr>
-
+                        <td>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <label>Visit Date</label>
+                            <div class="ui icon input">
+                                <i class="calendar outline icon"></i>
+                                <input type="text" name="visitdate">
+                                <input type="hidden" id="visit_theatername" name="visit_theatername">
+                                <input type="hidden" id="visit_companyname" name="visit_companyname">
+                            </div>
+                        </td>
+                        <td></td>
                     </tr>
                     </tfoot>
                 </table>
             </div>
+                <div class="ui error mini message"></div>
+                <div class="ui mini negative message" th:unless="${#strings.isEmpty(message_date)}" th:text="${message_date}"></div>
+                <div class="ui mini negative message" th:unless="${#strings.isEmpty(message_checkbox)}" th:text="${message_checkbox}"></div>
+                <div class="ui mini message" th:unless="${#strings.isEmpty(message)}" th:text="${message}"></div>
+                <br><button class="ui large fluid submit primary button">Visit</button><br>
+            </form>
         </div>
     </div>
-    <br><a class="ui large fluid button" href="#" th:href="@{/func/customerFunctionality}">Back</a><br>
+    <a class="ui large fluid button" href="#" th:href="@{/func/customerFunctionality}">Back</a><br>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
 <script>
-
+    function onlyOne(checkbox) {
+        var checkboxes = document.getElementsByName('check');
+        checkboxes.forEach((item) => {
+            if (item !== checkbox) item.checked = false
+        });
+        var row = checkbox.parentNode.parentNode.parentNode;
+        var cols = row.getElementsByTagName("td");
+        var theatername = cols[1].childNodes[0].nodeValue;
+        var companyname = cols[3].childNodes[0].nodeValue;
+        document.getElementById('visit_theatername').value = theatername;
+        document.getElementById('visit_companyname').value = companyname;
+    }
 </script>
 </body>
 </html>

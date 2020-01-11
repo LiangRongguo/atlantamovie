@@ -1,6 +1,7 @@
 package com.example.demo.web.function;
 
 import com.example.demo.po.Movie;
+import com.example.demo.po.User;
 import com.example.demo.service.*;
 import com.example.demo.vo.CompanyQuery;
 import com.example.demo.vo.TheaterQuery;
@@ -134,5 +135,35 @@ public class AdminFunctionController {
                                       @RequestParam String employee_max) {
         model.addAttribute("page_company", companyService.filterCompany(pageable, new CompanyQuery(name, city_min, city_max, theater_min, theater_max, employee_min, employee_max)));
         return "function/manageCompany_Admin";
+    }
+
+    @PostMapping("/logVisit_Admin")
+    public String logVisit_User(@PageableDefault(size = 10) Pageable pageable, Model model, TheaterQuery theaterQuery,
+                                @RequestParam String visitdate,
+                                @RequestParam String visit_theatername,
+                                @RequestParam String visit_companyname,
+                                HttpSession session,
+                                RedirectAttributes attributes) {
+        model.addAttribute("page_company", companyService.listCompany(pageable));
+        model.addAttribute("page_theater", theaterService.listTheater(pageable));
+        model.addAttribute("page", theaterService.filterTheater(pageable, theaterQuery));
+        boolean flag = false;
+        if ("".equals(visitdate)) {
+            attributes.addFlashAttribute("message_date", "Please input visit date(YYYY-MM-DD) to log a visit.");
+            flag = true;
+        }
+        if ("".equals(visit_theatername) || "".equals(visit_companyname)) {
+            attributes.addFlashAttribute("message_checkbox", "Please select a theater to log a visit.");
+            flag = true;
+        }
+
+        if (flag)
+            return "redirect:exploreTheater_Admin";
+
+        User user = (User) session.getAttribute("user");
+        assert user != null;
+        visitService.saveVisit(visitdate, user.getUsername(), visit_theatername, visit_companyname);
+        attributes.addFlashAttribute("message", "Visit record logged successfully.");
+        return "redirect:exploreTheater_Admin";
     }
 }

@@ -3,7 +3,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/AtlantaMovie
     username: root
-    password: a3108326251
+    password: root2020!
   jpa:
     hibernate:
       ddl-auto: none

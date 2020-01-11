@@ -27,6 +27,14 @@ public class visit implements Serializable {
     private Theater theater;
 
     public visit() {
+
+    }
+
+    public visit(String date, String visitor, String theatername, String companyname) {
+        this.date = date;
+        this.visitor = visitor;
+        this.theatername = theatername;
+        this.companyname = companyname;
     }
 
     public Integer getId() {
@@ -69,6 +77,14 @@ public class visit implements Serializable {
         this.companyname = companyname;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     public Theater getTheater() {
         return theater;
     }
@@ -88,3 +104,4 @@ public class visit implements Serializable {
                 '}';
     }
 }
+

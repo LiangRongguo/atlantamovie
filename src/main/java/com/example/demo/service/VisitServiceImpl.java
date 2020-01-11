@@ -47,4 +47,10 @@ public class VisitServiceImpl implements VisitService {
             }
         }, pageable);
     }
+
+    @Override
+    public visit saveVisit(String date, String visitor, String theatername, String companyname) {
+        visit v = new visit(date, visitor, theatername, companyname);
+        return visitRepository.saveAndFlush(v);
+    }
 }

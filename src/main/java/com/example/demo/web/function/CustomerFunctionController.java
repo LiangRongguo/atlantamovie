@@ -111,4 +111,34 @@ public class CustomerFunctionController {
         model.addAttribute("page", usedService.filterUsed(pageable, username));
         return "function/viewHistory_Customer";
     }
+
+    @PostMapping("/logVisit_Customer")
+    public String logVisit_User(@PageableDefault(size = 10) Pageable pageable, Model model, TheaterQuery theaterQuery,
+                                @RequestParam String visitdate,
+                                @RequestParam String visit_theatername,
+                                @RequestParam String visit_companyname,
+                                HttpSession session,
+                                RedirectAttributes attributes) {
+        model.addAttribute("page_company", companyService.listCompany(pageable));
+        model.addAttribute("page_theater", theaterService.listTheater(pageable));
+        model.addAttribute("page", theaterService.filterTheater(pageable, theaterQuery));
+        boolean flag = false;
+        if ("".equals(visitdate)) {
+            attributes.addFlashAttribute("message_date", "Please input visit date(YYYY-MM-DD) to log a visit.");
+            flag = true;
+        }
+        if ("".equals(visit_theatername) || "".equals(visit_companyname)) {
+            attributes.addFlashAttribute("message_checkbox", "Please select a theater to log a visit.");
+            flag = true;
+        }
+
+        if (flag)
+            return "redirect:exploreTheater_Customer";
+
+        User user = (User) session.getAttribute("user");
+        assert user != null;
+        visitService.saveVisit(visitdate, user.getUsername(), visit_theatername, visit_companyname);
+        attributes.addFlashAttribute("message", "Visit record logged successfully.");
+        return "redirect:exploreTheater_Customer";
+    }
 }
