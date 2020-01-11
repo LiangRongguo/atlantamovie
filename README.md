@@ -25,7 +25,7 @@ Direct to project wiki page to download progress documentations in PDF.
 
 - [Project Wiki](https://github.com/LiangRongguo/atlantamovie/wiki)
 
-- [Course Project Requirement&Instruction]((https://github.com/LiangRongguo/atlantamovie/blob/master/README-RESOURCE/CS4400Fall2019Project.pdf))
+- [Course Project Requirement&Instruction](https://github.com/LiangRongguo/atlantamovie/blob/master/README-RESOURCE/CS4400Fall2019Project.pdf)
  
 - Project Hightlights:
  
