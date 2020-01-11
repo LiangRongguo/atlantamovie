@@ -4,30 +4,26 @@
 #  Movie Theater Management System
 
  
-![title_logo](https://github.com/LiangRongguo/atlantamovie/blob/master/img/title_log.png)
 ![title_logo](img/title_log.png)
 
 
-## Project <"Hood---Mate"> V1
+## Project <"Movie Theater Databse Management System"> V1
 
-The project is aimed to build a local social network product powered by a recommendation algorithm that helps users to locate the best residency in the city and match their profile and personal interests with potential roommates.
+The project is aimed to build a theater database management system to improve the management and manipulation for users, administrators, customers, managers and cross-identity users.
 
-It is also an academic study project of big data analysis and visualization, conducted by a group of students from Georgia Institute of Technology.  
+It is also an academic study project of full-stack system development, conducted by Rongguo Liang.  
+
+The design and structure for the database comes from CS4400 "Database System", instructed by Mark Moss, from Georgia Institute of Technology.
 
 ## Authors
 
-* **Muyang Guo**
-* **Changxuan Zhao**
-* **Xingjian Wang**
-* **Rui Jia**
-* **Xiaoxun Liu**
-* **Xufan Song**
+* **Rongguo Liang**
 
 ## Documentations
 
 Direct to project wiki page to download progress documentations in PDF. 
 
-- [Project Wiki](https://github.com/MUYANGGUO/6242/wiki)
+- [Project Wiki](https://github.com/LiangRongguo/atlantamovie/wiki)
  
 - Project Hightlights:
  
@@ -89,11 +85,8 @@ This project is licensed under the GPL_3.0 License - see the [LICENSE.md](/LICEN
 
 ## Acknowledgments
 
-To be updated ... ...
+To be updated...
 
 ## Demo
-[V1 Demo](https://www.youtube.com/watch?v=lmKRxIYy7Eo)
+[V1 Demo](https://www.youtube.com/)
 
-<a href="http://www.youtube.com/watch?feature=player_embedded&v=lmKRxIYy7Eo
-" target="_blank"><img src="http://img.youtube.com/vi/lmKRxIYy7Eo/0.jpg" 
-alt="Demo V1"/></a>
