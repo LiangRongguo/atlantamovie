@@ -4,7 +4,7 @@
 #  Movie Theater Management System
 
  
-![title_logo](https://github.com/LiangRongguo/atlantamovie/blob/master/img/title_log.png)
+![title_logo](https://github.com/LiangRongguo/atlantamovie/blob/master/README-RESOURCE/title_log.png)
 
 
 ## Project <"Movie Theater Databse Management System"> V1
@@ -24,6 +24,8 @@ The design and structure for the database comes from CS4400 "Database System", i
 Direct to project wiki page to download progress documentations in PDF. 
 
 - [Project Wiki](https://github.com/LiangRongguo/atlantamovie/wiki)
+
+- [Course Project Requirement&Instruction]((https://github.com/LiangRongguo/atlantamovie/blob/master/README-RESOURCE/CS 4400 Fall 2019 Project.pdf))
  
 - Project Hightlights:
  
