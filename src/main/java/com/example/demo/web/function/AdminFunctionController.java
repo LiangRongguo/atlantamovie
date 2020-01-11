@@ -61,7 +61,7 @@ public class AdminFunctionController {
         }
 
         Movie movie = movieService.saveMovie(name, duration, releasedate);
-        attributes.addFlashAttribute("message", "Movie Created Successfully.");
+        attributes.addFlashAttribute("message_success", "Movie Created Successfully.");
         return "redirect:/func/createMovie_Admin";
     }
 
