@@ -67,6 +67,7 @@
                 </div>
                 <div class="ui error mini message"></div>
                 <div class="ui mini negative message" th:unless="${#strings.isEmpty(message)}" th:text="${message}">Customer registration failed</div>
+                <div class="ui mini positive message" th:unless="${#strings.isEmpty(message_success)}" th:text="${message_success}">Customer registration successfully.</div>
                 <button class="ui large fluid submit primary button">Register</button>
             </form>
             <br>

@@ -154,7 +154,7 @@
                 <div class="ui error mini message"></div>
                 <div class="ui mini negative message" th:unless="${#strings.isEmpty(message_date)}" th:text="${message_date}"></div>
                 <div class="ui mini negative message" th:unless="${#strings.isEmpty(message_checkbox)}" th:text="${message_checkbox}"></div>
-                <div class="ui mini message" th:unless="${#strings.isEmpty(message)}" th:text="${message}"></div>
+                <div class="ui mini positive message" th:unless="${#strings.isEmpty(message)}" th:text="${message}"></div>
                 <br><button class="ui large fluid submit primary button">Visit</button><br>
             </form>
         </div>

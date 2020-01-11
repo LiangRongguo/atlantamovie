@@ -24,6 +24,7 @@
                 </div>
                 <div class="ui error mini message"></div>
                 <div class="ui mini negative message" th:unless="${#strings.isEmpty(message)}" th:text="${message}">Add creditcard failed</div>
+                <div class="ui mini positive message" th:unless="${#strings.isEmpty(message_success)}" th:text="${message_success}"></div>
                 <button class="ui large fluid submit primary button">Add</button><br>
                 <a class="ui large fluid button" href="#" th:href="@{/func/customerFunctionality}">Back</a>
             </form>

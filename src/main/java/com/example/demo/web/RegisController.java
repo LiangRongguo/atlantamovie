@@ -66,7 +66,7 @@ public class RegisController {
         User u = userService.saveUser(username, firstname, lastname, password);
 
         if (u != null) {
-            attributes.addFlashAttribute("message", "User registered successfully.");
+            attributes.addFlashAttribute("message_success", "User registered successfully.");
         } else {
             userService.delete(username);
             attributes.addFlashAttribute("message", "User registration failed.");
@@ -109,7 +109,7 @@ public class RegisController {
         User user = userService.saveUser(username, firstname, lastname, password);
         Customer customer = customerService.saveCustomer(username);
         Creditcard creditcard = creditcardService.saveCreditcard(creditcardnum, username);
-        attributes.addFlashAttribute("message", "Customer registered successfully.");
+        attributes.addFlashAttribute("message_success", "Customer registered successfully.");
 
         return "redirect:/login";
     }
@@ -153,7 +153,7 @@ public class RegisController {
         User user = userService.saveUser(username, firstname, lastname, password);
         Employee employee = employeeService.saveEmployee(username);
         Manager manager = managerService.saveManager(username, company, street, city, state, zipcode);
-        attributes.addFlashAttribute("message", "Manager registered successfully.");
+        attributes.addFlashAttribute("message_success", "Manager registered successfully.");
 
         return "redirect:/login";
     }
@@ -206,7 +206,7 @@ public class RegisController {
         Manager manager = managerService.saveManager(username, company, street, city, state, zipcode);
         Customer customer = customerService.saveCustomer(username);
         Creditcard creditcard = creditcardService.saveCreditcard(creditcardnum, username);
-        attributes.addFlashAttribute("message", "Manager&Customer registered successfully.");
+        attributes.addFlashAttribute("message_success", "Manager&Customer registered successfully.");
 
         return "redirect:/login";
     }

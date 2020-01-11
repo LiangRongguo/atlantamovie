@@ -42,11 +42,6 @@ public class LoginController {
         return "/login";
     }
 
-    @GetMapping("/index")
-    public String index() {
-        return "/index";
-    }
-
     @PostMapping("/login")
     public  String login(@RequestParam String username,
                          @RequestParam String password,
