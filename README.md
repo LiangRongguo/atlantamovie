@@ -13,7 +13,7 @@ The project is aimed to build a theater database management system to improve th
 
 It is also an academic study project of full-stack system development, conducted by Rongguo Liang.  
 
-The design and structure for the database comes from CS4400 "Database System", instructed by Mark Moss, from Georgia Institute of Technology.
+The design and structure for the database comes from ***CS4400 "Database System", instructed by Mark Moss, from Georgia Institute of Technology.***
 
 ## Authors
 
