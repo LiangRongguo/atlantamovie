@@ -4,7 +4,7 @@
 #  Movie Theater Management System
 
  
-![title_logo](img/title_log.png)
+![title_logo](https://github.com/LiangRongguo/atlantamovie/blob/master/img/title_log.png)
 
 
 ## Project <"Movie Theater Databse Management System"> V1
@@ -27,9 +27,7 @@ Direct to project wiki page to download progress documentations in PDF.
  
 - Project Hightlights:
  
- ![image1](https://github.com/MUYANGGUO/6242/blob/master/readme_images/image1.png)
- ![image2](https://github.com/MUYANGGUO/6242/blob/master/readme_images/image2.png)
- ![image3](https://github.com/MUYANGGUO/6242/blob/master/readme_images/image3.png)
+ ![image1](https://github.com/LiangRongguo/atlantamovie/blob/master/img/loginPage.png)
 
 ## Datasets
 
