@@ -1,10 +1,11 @@
 [![By RONGGUO_LIANG](https://img.shields.io/badge/by-RONGGUOLIANG-blue.svg)](https://github.com/LiangRongguo) [![Licence](https://img.shields.io/badge/license-GPL--3.0-blue.svg)](https://github.com/LiangRongguo/6242/blob/master/LICENSE) [![GitHub issues](https://img.shields.io/github/issues/LiangRongguo/atlantamovie.svg)](https://github.com/LiangRongguo/atlantamovie/issues/) [![GitHub Stars](https://img.shields.io/github/stars/LiangRongguo/atlantamovie.svg?style=social&label=Star)](https://github.com/LiangRongguo/atlantamovie)[![GitHub Forks](https://img.shields.io/github/forks/LiangRongguo/atlantamovie.svg?style=social&label=Fork)](https://github.com/LiangRongguo/atlantamovie)
 
 
-#  Atlanta Movie Theater Management System
+#  Movie Theater Management System
 
  
 ![title_logo](https://github.com/LiangRongguo/atlantamovie/blob/master/img/title_log.png)
+![title_logo](img/title_log.png)
 
 
 ## Project <"Hood---Mate"> V1
