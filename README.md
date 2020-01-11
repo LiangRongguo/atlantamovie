@@ -25,11 +25,11 @@ Direct to project wiki page to download progress documentations in PDF.
 
 - [Project Wiki](https://github.com/LiangRongguo/atlantamovie/wiki)
 
-- [Course Project Requirement&Instruction]((https://github.com/LiangRongguo/atlantamovie/blob/master/README-RESOURCE/CS 4400 Fall 2019 Project.pdf))
+- [Course Project Requirement&Instruction]((https://github.com/LiangRongguo/atlantamovie/blob/master/README-RESOURCE/CS4400Fall2019Project.pdf))
  
 - Project Hightlights:
  
- ![image1](https://github.com/LiangRongguo/atlantamovie/blob/master/img/loginPage.png)
+ ![image1](https://github.com/LiangRongguo/atlantamovie/blob/master/README-RESOURCE/loginPage.png)
 
 ## Datasets
 
