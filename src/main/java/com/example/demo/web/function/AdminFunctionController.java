@@ -105,16 +105,17 @@ public class AdminFunctionController {
     }
 
     @GetMapping("/manageUser_Admin")
-    public String manageUser_AdminPage(@PageableDefault(size = 10) Pageable pageable, Model model, UserQuery userQuery) {
+    public String manageUser_AdminPage(@PageableDefault(size = 100) Pageable pageable, Model model, UserQuery userQuery) {
         model.addAttribute("page_user", userService.filterUser(pageable, userQuery));
         return "function/manageUser_Admin";
     }
 
     @PostMapping("/manageUser_Admin")
-    public String manageUser_Admin(@PageableDefault(size = 10, sort = {"username"},direction = Sort.Direction.ASC) Pageable pageable, Model model,
+    public String manageUser_Admin(@PageableDefault(size = 100, sort = {"username"},direction = Sort.Direction.ASC) Pageable pageable, Model model,
                                    @RequestParam String username,
                                    @RequestParam String status) {
         model.addAttribute("page_user", userService.filterUser(pageable, new UserQuery(username, status)));
+
         return "function/manageUser_Admin";
     }
 
