@@ -54,7 +54,7 @@ Direct to project wiki page to download progress documentations in PDF.
  
  ![image1](https://github.com/LiangRongguo/atlantamovie/blob/master/README-RESOURCE/schema2.png)
  
-- [Database .sql file]((https://github.com/LiangRongguo/atlantamovie/blob/master/sql/database.sql)) - this file contains the database structure, data, stored procedures. Just simply run it in MySQL and get the database.
+- [Database .sql file](https://github.com/LiangRongguo/atlantamovie/blob/master/sql/database.sql) - this file contains the database structure, data, stored procedures. Just simply run it in MySQL and get the database.
 
 
 ## Spring Database Management System
