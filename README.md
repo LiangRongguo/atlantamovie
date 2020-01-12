@@ -49,46 +49,35 @@ Direct to project wiki page to download progress documentations in PDF.
 
 - [Schema](https://github.com/LiangRongguo/atlantamovie/blob/master/README-RESOURCE/CS4400Fall2019SchemaKey.pdf)
 
-## Visulization
 
-- HTML,CSS, JS
+## Spring Database Management System
 
-- [Deck.gl](https://deck.gl/#/)
+This system is powered by many powerful frameworks and third-party projects:
 
-> All deck.gl layers are made to allow zoom, pan, rotate, focus. 
-> All Props are made to be clickable/hoverable for different interactive purpose or exploratory data stats display.
- 
-  - Base Map Layer, mapbox tiles layer
-  - Cleaned and reformatted Zillow geoJSON data as base layer, as subregions partitions
-  - Systematically Sampled Uber Movements Trips Data, scaled to street level with color scheme for speed.
-  - Icon Layers:
-    - Red Icons : Hosts/Landlords, location as host location
-    - Green Icons: Visitors/Tenants, location as destination location
-    - Blue Icons: User "My Location"
-  - Profile images layers, showing up with Icon Layers, display the users profile avatar image.
-  - SFPD safety 3D extruded hexagon layers, show selected props surrounding incidents history since 2019, projected to hexagons and sort, rank by occurences for each sub hexagon. Extruded height is the incident density, with color scheme. 
-    - on Hover: show the stats.
-  - Yelp location icon layers, display selected props surrounding POIs, based on the keyword inputs, showing up in black to red linearly scaled color, color indicating the ratings. 
-    - on Hover: show the yelp essential infos.
+- [Spring Boot](https://spring.io/projects/spring-boot) and many of Spring familiy (e.g. Spring MVC, Spring JPA, Spring Secruity and etc)
+- Hibernate + MySQL
+- JS, HTML, CSS
+- [Semantic UI](https://github.com/Semantic-Org/Semantic-UI) - a UI component framework based around useful principles from natural language.
+- [Thymeleaf](https://github.com/thymeleaf/thymeleaf) (Spring MVC) - Thymeleaf is a modern server-side Java template engine for both web and standalone environments. 
 
 ## To do
 
 **Working on how to retrieve joined data using Spring Specification**
 
-- Screen 13: Admin Manager User
+- [ ] Screen 13: Admin Manager User
 
     - approve/decline user
 
-- Screen 14: Admin Manage Company
+- [ ] Screen 14: Admin Manage Company
 
     - Screen 15 Admin Create Theater
 
-- Screen 18: Manager Theater Overview: 
+- [ ] Screen 18: Manager Theater Overview: 
     
     - duration column in the table
     - select "not played" option
     
-- Screen 20: Customer Explore Movie
+- [ ] Screen 20: Customer Explore Movie
 
     - view movie
 
