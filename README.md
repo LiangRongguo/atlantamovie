@@ -47,11 +47,7 @@ Direct to project wiki page to download progress documentations in PDF.
 
  ![image1](https://github.com/LiangRongguo/atlantamovie/blob/master/README-RESOURCE/EER.png)
 
-- [Yelp Open Dataset](https://www.yelp.com/dataset)
-
-- [Zillow Dataset](https://www.zillow.com/howto/api/APIOverview.htm)
-
-- [SFPD Historical Crime Data](https://data.sfgov.org/Public-Safety/Police-Department-Incident-Reports-2018-to-Present/wg3w-h783)
+- [Schema](https://github.com/LiangRongguo/atlantamovie/blob/master/README-RESOURCE/CS4400Fall2019SchemaKey.pdf)
 
 ## Visulization
 
