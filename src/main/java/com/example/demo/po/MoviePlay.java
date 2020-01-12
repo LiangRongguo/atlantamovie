@@ -34,6 +34,14 @@ public class MoviePlay {
     public MoviePlay() {
     }
 
+    public MoviePlay(String moviename, String releasedate, String companyname, String theatername, String date) {
+        this.moviename = moviename;
+        this.releasedate = releasedate;
+        this.companyname = companyname;
+        this.theatername = theatername;
+        this.date = date;
+    }
+
     public String getMoviename() {
         return moviename;
     }

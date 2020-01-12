@@ -7,6 +7,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface MovieRepository extends JpaRepository<Movie, MovieId> {
     Movie findByNameAndReleasedate(String name, String releasedate);
 
+
+
     // original version:
     // used embedded id for composite primary key
     // usage for findBy as below:

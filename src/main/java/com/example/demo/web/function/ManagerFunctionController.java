@@ -1,9 +1,10 @@
 package com.example.demo.web.function;
 
+import com.example.demo.po.Movie;
+import com.example.demo.po.MoviePlay;
+import com.example.demo.po.Theater;
 import com.example.demo.po.User;
-import com.example.demo.service.CompanyService;
-import com.example.demo.service.TheaterService;
-import com.example.demo.service.VisitService;
+import com.example.demo.service.*;
 import com.example.demo.vo.TheaterQuery;
 import com.example.demo.vo.VisitQuery;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,13 +32,19 @@ public class ManagerFunctionController {
     @Autowired
     private VisitService visitService;
 
+    @Autowired
+    private MovieService movieService;
+
+    @Autowired
+    private MoviePlayService moviePlayService;
+
     @GetMapping("managerFunctionality")
     public String managerFunc() {
         return "function/managerFunctionality";
     }
 
     @GetMapping("/exploreTheater_Manager")
-    public String exploreTheaterPage(@PageableDefault(size = 10) Pageable pageable, Model model, TheaterQuery theaterQuery) {
+    public String exploreTheaterPage(@PageableDefault(size = 100) Pageable pageable, Model model, TheaterQuery theaterQuery) {
         model.addAttribute("page_company", companyService.listCompany(pageable));
         model.addAttribute("page_theater", theaterService.listTheater(pageable));
         model.addAttribute("page", theaterService.filterTheater(pageable, theaterQuery));
@@ -45,7 +52,7 @@ public class ManagerFunctionController {
     }
 
     @PostMapping("/exploreTheater_Manager")
-    public String exploreTheater(@PageableDefault(size = 10) Pageable pageable, Model model,
+    public String exploreTheater(@PageableDefault(size = 100) Pageable pageable, Model model,
                                  @RequestParam String theater,
                                  @RequestParam String company,
                                  @RequestParam String city,
@@ -58,14 +65,14 @@ public class ManagerFunctionController {
     }
 
     @GetMapping("/visitHistory_Manager")
-    public String visitHistoryPage(@PageableDefault(size = 10) Pageable pageable, Model model, VisitQuery visitQuery, HttpSession session) {
+    public String visitHistoryPage(@PageableDefault(size = 100) Pageable pageable, Model model, VisitQuery visitQuery, HttpSession session) {
         model.addAttribute("page_company", companyService.listCompany(pageable));
         model.addAttribute("page", visitService.filterVisit(pageable, visitQuery, session));
         return "function/visitHistory_Manager";
     }
 
     @PostMapping("/visitHistory_Manager")
-    public String visitHistory(@PageableDefault(size = 10) Pageable pageable, Model model,
+    public String visitHistory(@PageableDefault(size = 100) Pageable pageable, Model model,
                                @RequestParam String company,
                                @RequestParam String beginDate,
                                @RequestParam String endDate,
@@ -86,17 +93,48 @@ public class ManagerFunctionController {
     }
 
     @GetMapping("/scheduleMovie_Manager")
-    public String scheduleMovie_ManagerPage() {
+    public String scheduleMovie_ManagerPage(@PageableDefault(size = 100) Pageable pageable, Model model) {
+        model.addAttribute("page_movie", movieService.listMovie(pageable));
         return "function/scheduleMovie_Manager";
     }
 
     @PostMapping("/scheduleMovie_Manager")
-    public String scheduleMovie_Manager() {
-        return "function/scheduleMovie_Manager";
+    public String scheduleMovie_Manager(@PageableDefault(size = 100) Pageable pageable, Model model,
+                                        @RequestParam String moviename,
+                                        @RequestParam String releasedate,
+                                        @RequestParam String date,
+                                        HttpSession session,
+                                        RedirectAttributes attributes) {
+        // first check if the combination of moviename and releasedate refers to an existed movie
+        Movie movie = movieService.findMovie(moviename, releasedate);
+        if (movie == null) {
+            attributes.addFlashAttribute("message", "Movie not created. Please select an existed combination of movie name and release date.");
+            return "redirect:/func/scheduleMovie_Manager";
+        }
+
+        if (date.compareTo(releasedate) < 0) {
+            attributes.addFlashAttribute("message", "You can not schedule a movie before it is released.");
+            return "redirect:/func/scheduleMovie_Manager";
+        }
+
+        User user = (User) session.getAttribute("user");
+        Theater theater = theaterService.findByManager(user.getUsername());
+
+        MoviePlay moviePlay = moviePlayService.checkMoviePlay(moviename, releasedate, theater.getCompanyname(), theater.getTheatername(), date);
+        if (moviePlay != null) {
+            attributes.addFlashAttribute("message", "This movie has already been scheduled.");
+            return "redirect:/func/scheduleMovie_Manager";
+        }
+
+        MoviePlay moviePlay1 = moviePlayService.saveMoviePlay(moviename, releasedate, theater.getCompanyname(), theater.getTheatername(), date);
+        attributes.addFlashAttribute("message_success", "Movie scheduled successfully.");
+        model.addAttribute("page_movie", movieService.listMovie(pageable));
+
+        return "redirect:/func/scheduleMovie_Manager";
     }
 
     @PostMapping("/logVisit_Manager")
-    public String logVisit_User(@PageableDefault(size = 10) Pageable pageable, Model model, TheaterQuery theaterQuery,
+    public String logVisit_User(@PageableDefault(size = 100) Pageable pageable, Model model, TheaterQuery theaterQuery,
                                 @RequestParam String visitdate,
                                 @RequestParam String visit_theatername,
                                 @RequestParam String visit_companyname,

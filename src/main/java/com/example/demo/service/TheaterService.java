@@ -8,4 +8,5 @@ import org.springframework.data.domain.Pageable;
 public interface TheaterService {
     Page<Theater> listTheater(Pageable pageable);
     Page<Theater> filterTheater(Pageable pageable, TheaterQuery theater);
+    Theater findByManager(String manager);
 }

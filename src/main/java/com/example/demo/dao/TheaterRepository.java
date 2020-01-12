@@ -5,5 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
 public interface TheaterRepository extends JpaRepository<Theater, String>, JpaSpecificationExecutor<Theater> {
-
+    Theater findByManager(String manager);
 }

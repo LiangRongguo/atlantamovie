@@ -3,6 +3,8 @@ package com.example.demo.service;
 import com.example.demo.dao.MovieRepository;
 import com.example.demo.po.Movie;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -22,5 +24,10 @@ public class MovieServiceImpl implements MovieService {
         movie.setReleasedate(releasedate);
         movie.setDuration(duration);
         return movieRepository.saveAndFlush(movie);
+    }
+
+    @Override
+    public Page<Movie> listMovie(Pageable pageable) {
+        return movieRepository.findAll(pageable);
     }
 }

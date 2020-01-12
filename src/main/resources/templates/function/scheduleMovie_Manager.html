@@ -19,27 +19,32 @@
                 <div class="two fields">
                     <div class="field">
                         <label>Name</label>
-                        <select class="ui search dropdown" name="movieName">
-                            <option value="">--ALL--</option>
+                        <select class="ui search dropdown" name="moviename">
+                            <option th:each="movie : ${page_movie.content}" th:value="${movie.name}" th:text="${movie.name}">Movie Name</option>
                         </select>
                     </div>
-                    <div class="field">
+                    <div class="required field">
                         <label>Release Date</label>
-                        <select class="ui search dropdown" name="releaseDate">
-                            <option value="">--ALL--</option>
-                        </select>
+                        <div class="ui icon input">
+                            <i class="calendar outline icon"></i>
+                            <input type="text" name="releasedate">
+                        </div>
                     </div>
                 </div>
                 <div class="two fields">
-                    <div class="field">
+                    <div class="required field">
                         <label>Play Date</label>
                         <div class="ui icon input">
-                            <input type="text" name="playDate">
+                            <i class="calendar outline icon"></i>
+                            <input type="text" name="date">
                         </div>
                     </div>
                     <div class="field">
                     </div>
                 </div>
+                <div class="ui error mini message"></div>
+                <div class="ui mini negative message" th:unless="${#strings.isEmpty(message)}" th:text="${message}">Movie scheduled failed</div>
+                <div class="ui mini positive message" th:unless="${#strings.isEmpty(message_success)}" th:text="${message_success}">Movie scheduled successfully.</div>
                 <button class="ui large fluid submit primary button">Add</button><br>
                 <a class="ui large fluid button" href="#" th:href="@{/func/managerFunctionality}">Back</a>
             </form>
@@ -51,7 +56,31 @@
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
 <script>
-
+    $('.ui.form').form({
+        fields : {
+            moviename : {
+                identifier: 'moviename',
+                rules: [{
+                    type : 'empty',
+                    prompt: 'Please input moviename'
+                }]
+            },
+            releasedate : {
+                identifier: 'releasedate',
+                rules: [{
+                    type : 'empty',
+                    prompt: 'Please input release date'
+                }]
+            },
+            date : {
+                identifier: 'date',
+                rules: [{
+                    type : 'empty',
+                    prompt: 'Please input play date'
+                }]
+            }
+        }
+    });
 </script>
 </body>
 </html>

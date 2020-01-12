@@ -49,5 +49,10 @@ public class TheaterServiceImpl implements TheaterService {
             }
         }, pageable);
     }
+
+    @Override
+    public Theater findByManager(String manager) {
+        return theaterRepository.findByManager(manager);
+    }
 }
 
