@@ -50,6 +50,13 @@ Direct to project wiki page to download progress documentations in PDF.
 - [Schema](https://github.com/LiangRongguo/atlantamovie/blob/master/README-RESOURCE/CS4400Fall2019SchemaKey.pdf)
 
 
+ ![image1](https://github.com/LiangRongguo/atlantamovie/blob/master/README-RESOURCE/schema1.png)
+ 
+ ![image1](https://github.com/LiangRongguo/atlantamovie/blob/master/README-RESOURCE/schema2.png)
+ 
+- [Database .sql file]((https://github.com/LiangRongguo/atlantamovie/blob/master/sql/database.sql)) - this file contains the database structure, data, stored procedures. Just simply run it in MySQL and get the database.
+
+
 ## Spring Database Management System
 
 This system is powered by many powerful frameworks and third-party projects:
