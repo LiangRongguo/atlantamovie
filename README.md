@@ -15,6 +15,15 @@ It is also an academic study project of full-stack system development, conducted
 
 The design and structure for the database comes from ***CS4400 "Database System", instructed by Mark Moss, from Georgia Institute of Technology.***
 
+**This system** is powered by many powerful frameworks and third-party projects:
+
+- [Spring Boot](https://spring.io/projects/spring-boot) and many of Spring familiy (e.g. Spring MVC, Spring JPA, Spring Secruity and etc)
+- Hibernate + MySQL
+- JS, HTML, CSS
+- [Semantic UI](https://github.com/Semantic-Org/Semantic-UI) - a UI component framework based around useful principles from natural language.
+- [Thymeleaf](https://github.com/thymeleaf/thymeleaf) (Spring MVC) - Thymeleaf is a modern server-side Java template engine for both web and standalone environments. 
+
+
 ## Authors
 
 * **Rongguo Liang**
@@ -40,16 +49,6 @@ Direct to project wiki page to download progress documentations in PDF.
  ![image1](https://github.com/LiangRongguo/atlantamovie/blob/master/README-RESOURCE/customerexploretheater.png)
 
  ![image1](https://github.com/LiangRongguo/atlantamovie/blob/master/README-RESOURCE/visithistory.png)
-
-## Spring Database Management System
-
-This system is powered by many powerful frameworks and third-party projects:
-
-- [Spring Boot](https://spring.io/projects/spring-boot) and many of Spring familiy (e.g. Spring MVC, Spring JPA, Spring Secruity and etc)
-- Hibernate + MySQL
-- JS, HTML, CSS
-- [Semantic UI](https://github.com/Semantic-Org/Semantic-UI) - a UI component framework based around useful principles from natural language.
-- [Thymeleaf](https://github.com/thymeleaf/thymeleaf) (Spring MVC) - Thymeleaf is a modern server-side Java template engine for both web and standalone environments. 
 
 ## Database
 
