@@ -34,14 +34,18 @@ Direct to project wiki page to download progress documentations in PDF.
  ![image1](https://github.com/LiangRongguo/atlantamovie/blob/master/README-RESOURCE/registernavigation.png)
 
  ![image1](https://github.com/LiangRongguo/atlantamovie/blob/master/README-RESOURCE/managercustomerregisterpage.png)
+ 
+ ![image1](https://github.com/LiangRongguo/atlantamovie/blob/master/README-RESOURCE/customerfunc.png) 
 
  ![image1](https://github.com/LiangRongguo/atlantamovie/blob/master/README-RESOURCE/customerexploretheater.png)
 
  ![image1](https://github.com/LiangRongguo/atlantamovie/blob/master/README-RESOURCE/visithistory.png)
 
-## Datasets
+## Database
 
-- [Uber Movements](https://movement.uber.com/cities?lang=en-US)
+- [Enhanced entity-relationship (EER) diagrams](https://github.com/LiangRongguo/atlantamovie/blob/master/README-RESOURCE/CS4400Fall2019EERKey.pdf)
+
+ ![image1](https://github.com/LiangRongguo/atlantamovie/blob/master/README-RESOURCE/EER.png)
 
 - [Yelp Open Dataset](https://www.yelp.com/dataset)
 
