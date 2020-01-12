@@ -41,6 +41,16 @@ Direct to project wiki page to download progress documentations in PDF.
 
  ![image1](https://github.com/LiangRongguo/atlantamovie/blob/master/README-RESOURCE/visithistory.png)
 
+## Spring Database Management System
+
+This system is powered by many powerful frameworks and third-party projects:
+
+- [Spring Boot](https://spring.io/projects/spring-boot) and many of Spring familiy (e.g. Spring MVC, Spring JPA, Spring Secruity and etc)
+- Hibernate + MySQL
+- JS, HTML, CSS
+- [Semantic UI](https://github.com/Semantic-Org/Semantic-UI) - a UI component framework based around useful principles from natural language.
+- [Thymeleaf](https://github.com/thymeleaf/thymeleaf) (Spring MVC) - Thymeleaf is a modern server-side Java template engine for both web and standalone environments. 
+
 ## Database
 
 - [Enhanced entity-relationship (EER) diagrams](https://github.com/LiangRongguo/atlantamovie/blob/master/README-RESOURCE/CS4400Fall2019EERKey.pdf)
@@ -56,16 +66,6 @@ Direct to project wiki page to download progress documentations in PDF.
  
 - [Database .sql file](https://github.com/LiangRongguo/atlantamovie/blob/master/sql/database.sql) - this file contains the database structure, data, stored procedures. Just simply run it in MySQL and get the database.
 
-
-## Spring Database Management System
-
-This system is powered by many powerful frameworks and third-party projects:
-
-- [Spring Boot](https://spring.io/projects/spring-boot) and many of Spring familiy (e.g. Spring MVC, Spring JPA, Spring Secruity and etc)
-- Hibernate + MySQL
-- JS, HTML, CSS
-- [Semantic UI](https://github.com/Semantic-Org/Semantic-UI) - a UI component framework based around useful principles from natural language.
-- [Thymeleaf](https://github.com/thymeleaf/thymeleaf) (Spring MVC) - Thymeleaf is a modern server-side Java template engine for both web and standalone environments. 
 
 ## To do
 
