@@ -5,10 +5,12 @@ import com.example.demo.po.MoviePlay;
 import com.example.demo.po.Theater;
 import com.example.demo.po.User;
 import com.example.demo.service.*;
+import com.example.demo.vo.MoviePlayQuery;
 import com.example.demo.vo.TheaterQuery;
 import com.example.demo.vo.VisitQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -83,12 +85,26 @@ public class ManagerFunctionController {
     }
 
     @GetMapping("/theaterOverview_Manager")
-    public String theaterOverviewPage() {
+    public String theaterOverviewPage(@PageableDefault(size = 100) Pageable pageable, Model model, MoviePlayQuery moviePlayQuery, HttpSession session) {
+        model.addAttribute("page_movieplay", moviePlayService.filterMoviePlay(pageable, moviePlayQuery));
         return "function/theaterOverview_Manager";
     }
 
     @PostMapping("/theaterOverview_Manager")
-    public String theaterOverview() {
+    public String theaterOverview(@PageableDefault(size = 100) Pageable pageable, Model model,
+                                  @RequestParam String moviename,
+                                  @RequestParam String duration_min,
+                                  @RequestParam String duration_max,
+                                  @RequestParam String release_min,
+                                  @RequestParam String release_max,
+                                  @RequestParam String playdate_min,
+                                  @RequestParam String playdate_max,
+                                  HttpSession session
+                                  ) {
+        User user = (User) session.getAttribute("user");
+        Theater theater = theaterService.findByManager(user.getUsername());
+        MoviePlayQuery moviePlayQuery = new MoviePlayQuery(moviename, duration_min, duration_max, release_min, release_max, playdate_min ,playdate_max, theater.getCompanyname(), theater.getTheatername());
+        model.addAttribute("page_movieplay", moviePlayService.filterMoviePlay(pageable, moviePlayQuery));
         return "function/theaterOverview_Manager";
     }
 
@@ -99,7 +115,7 @@ public class ManagerFunctionController {
     }
 
     @PostMapping("/scheduleMovie_Manager")
-    public String scheduleMovie_Manager(@PageableDefault(size = 100) Pageable pageable, Model model,
+    public String scheduleMovie_Manager(@PageableDefault(size = 100, sort = {"moviename"},direction = Sort.Direction.ASC) Pageable pageable, Model model,
                                         @RequestParam String moviename,
                                         @RequestParam String releasedate,
                                         @RequestParam String date,
@@ -112,6 +128,7 @@ public class ManagerFunctionController {
             return "redirect:/func/scheduleMovie_Manager";
         }
 
+        // then check whether a valid play date
         if (date.compareTo(releasedate) < 0) {
             attributes.addFlashAttribute("message", "You can not schedule a movie before it is released.");
             return "redirect:/func/scheduleMovie_Manager";
@@ -129,6 +146,7 @@ public class ManagerFunctionController {
         MoviePlay moviePlay1 = moviePlayService.saveMoviePlay(moviename, releasedate, theater.getCompanyname(), theater.getTheatername(), date);
         attributes.addFlashAttribute("message_success", "Movie scheduled successfully.");
         model.addAttribute("page_movie", movieService.listMovie(pageable));
+
 
         return "redirect:/func/scheduleMovie_Manager";
     }

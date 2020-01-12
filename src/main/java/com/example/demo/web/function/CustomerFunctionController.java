@@ -42,7 +42,7 @@ public class CustomerFunctionController {
     }
 
     @GetMapping("/exploreTheater_Customer")
-    public String exploreTheaterPage(@PageableDefault(size = 10) Pageable pageable, Model model, TheaterQuery theaterQuery) {
+    public String exploreTheaterPage(@PageableDefault(size = 100) Pageable pageable, Model model, TheaterQuery theaterQuery) {
         model.addAttribute("page_company", companyService.listCompany(pageable));
         model.addAttribute("page_theater", theaterService.listTheater(pageable));
         model.addAttribute("page", theaterService.filterTheater(pageable, theaterQuery));
@@ -50,7 +50,7 @@ public class CustomerFunctionController {
     }
 
     @PostMapping("/exploreTheater_Customer")
-    public String exploreTheater(@PageableDefault(size = 10) Pageable pageable, Model model,
+    public String exploreTheater(@PageableDefault(size = 100) Pageable pageable, Model model,
                                  @RequestParam String theater,
                                  @RequestParam String company,
                                  @RequestParam String city,
@@ -62,14 +62,14 @@ public class CustomerFunctionController {
     }
 
     @GetMapping("/visitHistory_Customer")
-    public String visitHistoryPage(@PageableDefault(size = 10) Pageable pageable, Model model, VisitQuery visitQuery, HttpSession session) {
+    public String visitHistoryPage(@PageableDefault(size = 100) Pageable pageable, Model model, VisitQuery visitQuery, HttpSession session) {
         model.addAttribute("page_company", companyService.listCompany(pageable));
         model.addAttribute("page", visitService.filterVisit(pageable, visitQuery, session));
         return "function/visitHistory_Customer";
     }
 
     @PostMapping("/visitHistory_Customer")
-    public String visitHistory(@PageableDefault(size = 10) Pageable pageable, Model model,
+    public String visitHistory(@PageableDefault(size = 100) Pageable pageable, Model model,
                                @RequestParam String company,
                                @RequestParam String beginDate,
                                @RequestParam String endDate,
@@ -105,7 +105,7 @@ public class CustomerFunctionController {
     }
 
     @GetMapping("viewHistory_Customer")
-    public String viewHistory_Customer(@PageableDefault(size = 10) Pageable pageable, Model model, HttpSession session) {
+    public String viewHistory_Customer(@PageableDefault(size = 100) Pageable pageable, Model model, HttpSession session) {
         User user = (User) session.getAttribute("user");
         String username = user.getUsername();
         model.addAttribute("page", usedService.filterUsed(pageable, username));
@@ -113,7 +113,7 @@ public class CustomerFunctionController {
     }
 
     @PostMapping("/logVisit_Customer")
-    public String logVisit_User(@PageableDefault(size = 10) Pageable pageable, Model model, TheaterQuery theaterQuery,
+    public String logVisit_User(@PageableDefault(size = 100) Pageable pageable, Model model, TheaterQuery theaterQuery,
                                 @RequestParam String visitdate,
                                 @RequestParam String visit_theatername,
                                 @RequestParam String visit_companyname,

@@ -63,9 +63,26 @@ Direct to project wiki page to download progress documentations in PDF.
   - Yelp location icon layers, display selected props surrounding POIs, based on the keyword inputs, showing up in black to red linearly scaled color, color indicating the ratings. 
     - on Hover: show the yelp essential infos.
 
-## Map Service
+## To do
 
-- [Mapbox](http://mapbox.com/)
+**Working on how to retrieve joined data using Spring Specification**
+
+- Screen 13: Admin Manager User
+
+    - approve/decline user
+
+- Screen 14: Admin Manage Company
+
+    - Screen 15 Admin Create Theater
+
+- Screen 18: Manager Theater Overview: 
+    
+    - duration column in the table
+    - select "not played" option
+    
+- Screen 20: Customer Explore Movie
+
+    - view movie
 
 ## Contributing
 

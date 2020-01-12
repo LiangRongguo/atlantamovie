@@ -20,7 +20,7 @@
                     <div class="field">
                         <label>Movie Name(include)</label>
                         <div class="ui icon input">
-                            <input type="text" name="city_max">
+                            <input type="text" name="moviename">
                         </div>
                     </div>
                     <div class="field"></div>
@@ -91,12 +91,12 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
+                    <tr th:each="movieplay, iterStat : ${page_movieplay.content}">
+                        <td th:text="${iterStat.count}">1</td>
+                        <td th:text="${movieplay.moviename}">Movie Name</td>
+                        <td>TO DO: Duration</td>
+                        <td th:text="${movieplay.releasedate}">Release Date</td>
+                        <td th:text="${movieplay.date}">Play Date</td>
                     </tr>
                     </tbody>
                     <tfoot>

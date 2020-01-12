@@ -37,7 +37,7 @@ public class UserFunctionController {
     }
 
     @GetMapping("/exploreTheater_User")
-    public String exploreTheaterPage(@PageableDefault(size = 10) Pageable pageable, Model model, TheaterQuery theaterQuery) {
+    public String exploreTheaterPage(@PageableDefault(size = 100) Pageable pageable, Model model, TheaterQuery theaterQuery) {
         model.addAttribute("page_company", companyService.listCompany(pageable));
         model.addAttribute("page_theater", theaterService.listTheater(pageable));
         model.addAttribute("page", theaterService.filterTheater(pageable, theaterQuery));
@@ -45,7 +45,7 @@ public class UserFunctionController {
     }
 
     @PostMapping("/exploreTheater_User")
-    public String exploreTheater(@PageableDefault(size = 10) Pageable pageable, Model model,
+    public String exploreTheater(@PageableDefault(size = 100) Pageable pageable, Model model,
                                  @RequestParam String theater,
                                  @RequestParam String company,
                                  @RequestParam String city,
@@ -57,14 +57,14 @@ public class UserFunctionController {
     }
 
     @GetMapping("/visitHistory_User")
-    public String visitHistoryPage(@PageableDefault(size = 10) Pageable pageable, Model model, VisitQuery visitQuery, HttpSession session) {
+    public String visitHistoryPage(@PageableDefault(size = 100) Pageable pageable, Model model, VisitQuery visitQuery, HttpSession session) {
         model.addAttribute("page_company", companyService.listCompany(pageable));
         model.addAttribute("page", visitService.filterVisit(pageable, visitQuery, session));
         return "function/visitHistory_User";
     }
 
     @PostMapping("/visitHistory_User")
-    public String visitHistory(@PageableDefault(size = 10) Pageable pageable, Model model,
+    public String visitHistory(@PageableDefault(size = 100) Pageable pageable, Model model,
                                @RequestParam String company,
                                @RequestParam String beginDate,
                                @RequestParam String endDate,
@@ -75,7 +75,7 @@ public class UserFunctionController {
     }
 
     @PostMapping("/logVisit_User")
-    public String logVisit_User(@PageableDefault(size = 10) Pageable pageable, Model model, TheaterQuery theaterQuery,
+    public String logVisit_User(@PageableDefault(size = 100) Pageable pageable, Model model, TheaterQuery theaterQuery,
                                 @RequestParam String visitdate,
                                 @RequestParam String visit_theatername,
                                 @RequestParam String visit_companyname,

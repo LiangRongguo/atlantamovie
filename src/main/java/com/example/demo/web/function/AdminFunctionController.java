@@ -66,7 +66,7 @@ public class AdminFunctionController {
     }
 
     @GetMapping("/exploreTheater_Admin")
-    public String exploreTheaterPage(@PageableDefault(size = 10) Pageable pageable, Model model, TheaterQuery theaterQuery) {
+    public String exploreTheaterPage(@PageableDefault(size = 100) Pageable pageable, Model model, TheaterQuery theaterQuery) {
         model.addAttribute("page_company", companyService.listCompany(pageable));
         model.addAttribute("page_theater", theaterService.listTheater(pageable));
         model.addAttribute("page", theaterService.filterTheater(pageable, theaterQuery));
@@ -74,7 +74,7 @@ public class AdminFunctionController {
     }
 
     @PostMapping("/exploreTheater_Admin")
-    public String exploreTheater(@PageableDefault(size = 10) Pageable pageable, Model model,
+    public String exploreTheater(@PageableDefault(size = 100) Pageable pageable, Model model,
                                  @RequestParam String theater,
                                  @RequestParam String company,
                                  @RequestParam String city,
@@ -87,14 +87,14 @@ public class AdminFunctionController {
     }
 
     @GetMapping("/visitHistory_Admin")
-    public String visitHistoryPage(@PageableDefault(size = 10) Pageable pageable, Model model, VisitQuery visitQuery, HttpSession session) {
+    public String visitHistoryPage(@PageableDefault(size = 100) Pageable pageable, Model model, VisitQuery visitQuery, HttpSession session) {
         model.addAttribute("page_company", companyService.listCompany(pageable));
         model.addAttribute("page", visitService.filterVisit(pageable, visitQuery, session));
         return "function/visitHistory_Admin";
     }
 
     @PostMapping("/visitHistory_Admin")
-    public String visitHistory(@PageableDefault(size = 10) Pageable pageable, Model model,
+    public String visitHistory(@PageableDefault(size = 100) Pageable pageable, Model model,
                                @RequestParam String company,
                                @RequestParam String beginDate,
                                @RequestParam String endDate,
@@ -120,13 +120,13 @@ public class AdminFunctionController {
     }
 
     @GetMapping("/manageCompany_Admin")
-    public String manageCompany_AdminPage(@PageableDefault(size = 10) Pageable pageable, Model model, CompanyQuery companyQuery) {
+    public String manageCompany_AdminPage(@PageableDefault(size = 100) Pageable pageable, Model model, CompanyQuery companyQuery) {
         model.addAttribute("page_company", companyService.filterCompany(pageable, companyQuery));
         return "function/manageCompany_Admin";
     }
 
     @PostMapping("/manageCompany_Admin")
-    public String manageCompany_Admin(@PageableDefault(size = 10, sort = {"name"},direction = Sort.Direction.ASC) Pageable pageable, Model model,
+    public String manageCompany_Admin(@PageableDefault(size = 100, sort = {"name"},direction = Sort.Direction.ASC) Pageable pageable, Model model,
                                       @RequestParam String name,
                                       @RequestParam String city_min,
                                       @RequestParam String city_max,
@@ -139,7 +139,7 @@ public class AdminFunctionController {
     }
 
     @PostMapping("/logVisit_Admin")
-    public String logVisit_User(@PageableDefault(size = 10) Pageable pageable, Model model, TheaterQuery theaterQuery,
+    public String logVisit_User(@PageableDefault(size = 100) Pageable pageable, Model model, TheaterQuery theaterQuery,
                                 @RequestParam String visitdate,
                                 @RequestParam String visit_theatername,
                                 @RequestParam String visit_companyname,
