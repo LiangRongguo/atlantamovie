@@ -30,6 +30,14 @@ Direct to project wiki page to download progress documentations in PDF.
 - Project Hightlights:
  
  ![image1](https://github.com/LiangRongguo/atlantamovie/blob/master/README-RESOURCE/loginPage.png)
+ 
+ ![image1](https://github.com/LiangRongguo/atlantamovie/blob/master/README-RESOURCE/registernavigation.png)
+
+ ![image1](https://github.com/LiangRongguo/atlantamovie/blob/master/README-RESOURCE/managercustomerregisterpage.png)
+
+ ![image1](https://github.com/LiangRongguo/atlantamovie/blob/master/README-RESOURCE/customerexploretheater.png)
+
+ ![image1](https://github.com/LiangRongguo/atlantamovie/blob/master/README-RESOURCE/visithistory.png)
 
 ## Datasets
 
